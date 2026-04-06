@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Module 2 - Performance Optimized Glass</title>
+    <style>
+        @import url('https://fonts.cdnfonts.com/css/latin-modern-roman');
+        :root {
+            --primary-green: #197935;
+            --glass-bg: rgba(255, 255, 255, 0.08);
+            --glass-border: rgba(255, 255, 255, 0.15);
+            --text-light: #f8fafc;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            /* 2. Apply Inter to the main body */
+            font-family: 'Latin Modern Roman', 'Computer Modern Roman', 'Times New Roman', serif;
+            color: var(--text-light);
+            line-height: 1.6;
+            min-height: 100vh;
+            margin: 0; 
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+
+            /* Live Motion Bubble Gradient */
+            background-color: #050505; 
+            background-image: 
+                radial-gradient(circle at center, rgba(43, 178, 83, 0.4) 0%, transparent 60%),
+                radial-gradient(circle at center, rgba(20, 100, 45, 0.5) 0%, transparent 60%),
+                radial-gradient(circle at center, rgba(10, 40, 20, 0.6) 0%, transparent 60%);
+            background-size: 120vw 120vh, 150vw 150vh, 100vw 100vh;
+            background-repeat: no-repeat;
+            animation: bubbleMotion 25s ease-in-out infinite alternate;
+        }
+
+        /* ... (Keep all your other existing CSS exactly the same until you hit the code tag) ... */
+
+        code {
+            /* 3. Apply JetBrains Mono to the code blocks */
+            font-family: 'JetBrains Mono', monospace;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 2px 6px;
+            border-radius: 4px;
+            color: #afffbd;
+            font-size: 0.9em; /* Slightly scale down monospace fonts to match body text */
+        }
+
+        /* The Big Box (100% Width) */
+        .outer-container {
+            width: 100%;
+            max-width: 1200px; /* Limits width on ultra-wide screens for readability */
+            background: var(--glass-bg);
+            backdrop-filter: blur(12px); /* Glass effect */
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid var(--glass-border);
+            border-radius: 24px;
+            padding: 40px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+            margin: auto;
+        }
+
+        /* Glass Cards (Small Boxes) */
+        .card {
+            background: rgba(0, 0, 0, 0.4);
+            border: 1px solid var(--glass-border);
+            border-radius: 16px;
+            margin-bottom: 25px;
+            overflow: hidden;
+            transition: transform 0.3s ease;
+        }
+
+        .header-bar {
+            background: rgba(43, 178, 83, 0.2); /* Tinted green header */
+            padding: 15px 25px;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 0.85rem;
+            border-bottom: 1px solid var(--glass-border);
+        }
+
+        .content-area {
+            padding: 25px;
+        }
+
+        h2 {
+            color: var(--primary-green);
+            margin-bottom: 20px;
+            font-size: 1.3rem;
+        }
+
+        ul { list-style: none; }
+        li {
+            margin-bottom: 12px;
+            padding-left: 25px;
+            position: relative;
+        }
+
+        li::before {
+            content: "→";
+            color: var(--primary-green);
+            position: absolute;
+            left: 0;
+        }
+
+
+        /* Perspective Box with special border */
+        .perspective-box {
+            margin-top: 25px;
+            padding: 20px;
+            background: rgba(43, 178, 83, 0.1);
+            border-left: 4px solid var(--primary-green);
+            border-radius: 8px;
+            font-style: italic;
+        }
+
+        /* Coding Task Section */
+        .task-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--primary-green);
+        }
+
+        .task-header {
+            background: var(--primary-green);
+            color: #000;
+            padding: 10px 25px;
+            font-weight: 800;
+        }
+
+        /* Footer styling */
+        .footer-section {
+            margin-top: 30px;
+            display: grid;
+            gap: 10px;
+            opacity: 0.8;
+        }
+
+        .footer-item strong {
+            color: var(--primary-green);
+        }
+
+        /* Performance boost: disable blurs if the user prefers reduced motion */
+        @media (prefers-reduced-motion: reduce) {
+            body { animation: none; }
+            .outer-container { backdrop-filter: none; background: rgba(0,0,0,0.8); }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- The Big Box (Outer Rectangle) -->
+    <div class="outer-container">
+        
+        <!-- Small Box 1: Subtopics -->
+        <div class="card">
+            <div class="header-bar">Module 2 — Operators, Logic & Control Flow</div>
+            <div class="content-area">
+                <h2>📋 Core Concepts</h2>
+                <ul>
+                    <li><strong>Arithmetic:</strong> Standard operators and <code style="color:var(--primary-green)">//</code> (Floor), <code style="color:var(--primary-green)">%</code> (Modulo).</li>
+                    <li><strong>Bitwise:</strong> Hardware-level masking with <code>&</code>, <code>|</code>, and <code>^</code>.</li>
+                    <li><strong>Boolean:</strong> Short-circuit logic to prevent <code>ZeroDivisionError</code>.</li>
+                    <li><strong>Identity:</strong> Comparing memory addresses using <code>is</code> vs <code>==</code>.</li>
+                    <li><strong>Control Flow:</strong> Structural <code>match/case</code> for flat logic.</li>
+                </ul>
+
+                <div class="perspective-box">
+                    💡 <strong>The Architect's Perspective:</strong> Optimized code uses Bitwise flags to handle complex permissions with near-zero memory footprint.
+                </div>
+            </div>
+        </div>
+
+        <!-- Small Box 2: Coding Task -->
+        <div class="card task-card">
+            <div class="task-header">70% TASK: THE PERMISSION ENGINE</div>
+            <div class="content-area">
+                <h3>Objective: Build a Linux-style Validator</h3>
+                <ol style="padding-left: 20px; margin-top: 15px;">
+                    <li>Set Constants: <code>READ=4, WRITE=2, EXEC=1</code>.</li>
+                    <li>Use <strong>Bitwise AND</strong> to verify user permissions.</li>
+                    <li>Map results to a <code>match</code> block for security routing.</li>
+                </ol>
+            </div>
+        </div>
+
+        <!-- Footer Tasks -->
+        <div class="footer-section">
+            <div class="footer-item">📐 <strong>Creative:</strong> Diagram a short-circuit login flow.</div>
+            <div class="footer-item">🤖 <strong>AI-Proof:</strong> Refactor nested If-Else into a single Match statement.</div>
+        </div>
+
+    </div>
+
+</body>
+</html>

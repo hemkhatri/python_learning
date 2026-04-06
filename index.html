@@ -1,0 +1,1175 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="../favicon/hemlex_favicon.ico">
+    <title>Python Mastery: Systems Architecture</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/bitmaks/cm-web-fonts@latest/fonts.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@300..700&display=swap');
+        /* LaTeX / Overleaf Vibe CSS */
+
+
+        :root {
+            --bg-color: #ffffff;
+            --text-color: #000000;
+            --link-color: #0000ee;
+            --box-border: #333333;
+        }
+
+        body {
+            font-family: "Computer Modern Serif", serif;
+            /* font-weight: ; */
+            -webkit-font-smoothing: antialiased;
+            line-height: 1.6;
+            /* color: var(--text-color);
+            background-color: var(--bg-color); */
+            max-width: 850px;
+            margin: 0 auto;
+            padding: 2rem 4rem;
+            text-align: justify;
+            background-color: #ffffff;
+        }
+
+        /* Title Page */
+        .title-page {
+            height: 90vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            border-bottom: 2px solid var(--text-color);
+            margin-bottom: 4rem;
+        }
+
+        .title-page h1 {
+            font-size: 3.5rem;
+            margin-bottom: 0.5rem;
+            text-align: center;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .title-page h2 {
+            font-size: 1.8rem;
+            font-weight: normal;
+            margin-top: 0;
+            text-align: center;
+        }
+
+        .title-page p {
+            font-size: 1.2rem;
+            margin-top: 2rem;
+            font-style: italic;
+        }
+
+        /* Table of Contents */
+        .toc-container {
+            margin-bottom: 4rem;
+            page-break-after: always;
+        }
+
+        .toc-title {
+            text-align: center;
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            text-transform: uppercase;
+        }
+
+        .toc-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .toc-item {
+            display: flex;
+            align-items: baseline;
+            margin-bottom: 8px;
+        }
+
+        .toc-item a {
+            text-decoration: none;
+            color: var(--text-color);
+            font-size: 1.1rem;
+            transition: color 0.2s;
+        }
+
+        .toc-item a:hover {
+            color: var(--link-color);
+        }
+
+        .toc-dots {
+            flex-grow: 1;
+            border-bottom: 1px dotted var(--text-color);
+            margin: 0 10px;
+            position: relative;
+            top: -4px;
+        }
+
+        /* Module Styling */
+        .level-header {
+            font-size: 2rem;
+            text-transform: uppercase;
+            border-bottom: 2px solid var(--text-color);
+            padding-bottom: 10px;
+            margin-top: 4rem;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .module {
+            font-family: "Computer Modern Serif", serif;
+            background-color: #f1f2f6;
+            border: 2px solid #2d3436;
+            /* Darker border like the image */
+            padding: 20px;
+            border-radius: 12px;
+            /* Slightly tighter radius for a professional look */
+            margin-bottom: 4rem;
+            padding-top: 60px;
+            /* Increased top padding to make room for the header */
+            box-shadow: 4px 4px 0px rgba(0, 0, 0, 0.1);
+            position: relative;
+            /* Required for absolute positioning of the title */
+            overflow: hidden;
+            /* Clips the header to the box's rounded corners */
+        }
+
+        .module li::marker {
+            color: #0984e3;
+            /* Changes only the bullet color */
+        }
+
+        .module-title {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 40px;
+            /* Height of the dark bar */
+
+            /* Background & Text Colors */
+            background-color: #2d3436;
+            /* Dark grey/black from image */
+            color: #ffffff;
+
+            /* Alignment & Typography */
+            display: flex;
+            align-items: center;
+            padding: 0 20px;
+            font-size: 0.95rem;
+            font-weight: normal;
+            /* Image uses a lighter weight for the header */
+            letter-spacing: 0.5px;
+            text-transform: none;
+            /* Adjust as needed */
+
+            /* Resetting your previous styles that conflict */
+            border: none;
+            border-left: none;
+            border-radius: 0;
+            margin-bottom: 0;
+            box-shadow: none;
+
+        }
+
+        .subtopics {
+            margin-bottom: 1.5rem;
+        }
+
+        .subtopics i,
+        .architect-box i {
+            /* position: ; */
+            /* font-size: 1.4rem; */
+            color: #000;
+            margin-right: 10px;
+        }
+
+
+        .subtopics ul {
+            list-style-type: disc;
+            padding-left: 40px;
+        }
+
+        .subtopics li {
+            margin-bottom: 8px;
+        }
+
+        .subtopics h3 {
+            margin-top: 0;
+            font-size: 1.3rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        /* Boxes for Perspectives and Tasks */
+        .architect-box {
+            border: 1px solid var(--box-border);
+            border-radius: 23px;
+            border-color: #b5daf7;
+            padding: 15px 20px;
+            margin: 20px 0;
+            background-color: #fafafa;
+            /* box-shadow: 4px 4px 0px rgba(0, 0, 0, 0.1); */
+        }
+
+        .architect-box strong {
+            /* display: block; */
+            margin-bottom: 10px;
+            font-size: 1.1rem;
+            /* text-transform: uppercase; */
+            letter-spacing: 1px;
+        }
+
+        .module .task-box .task-title i {
+            padding-right: 6px;
+        }
+
+        .task-box {
+            background-color: #f1f2f6;
+            border: 2px solid #2d3436;
+            /* Darker border like the image */
+            padding: 0px 20px;
+            border-radius: 12px;
+            /* Slightly tighter radius for a professional look */
+            margin-bottom: 2rem;
+            padding-top: 30px;
+            box-shadow: 4px 4px 0px rgba(0, 0, 0, 0.1);
+            position: relative;
+            /* Required for absolute positioning of the title */
+            overflow: hidden;
+            /* Clips the header to the box's rounded corners */
+        }
+
+        .module .creative-task i {
+            padding-right: 7px;
+        }
+
+        .task-box p,
+        .task-box ol {
+            margin: -3px;
+            margin-bottom: 10px;
+            /* Adjust this for the gap you want */
+        }
+
+        .task-box li {
+            margin-bottom: 5px;
+            line-height: 1.4;
+            /* Controls space between lines of the same sentence */
+        }
+
+        /* 3. Fix the top padding to clear the 40px absolute header */
+        .task-box {
+            /* Change 30px to at least 50px or 60px so text starts below the header */
+            padding-top: 55px;
+            background-color: #f7fdf7;
+        }
+
+        .task-title {
+            /* Positioning - This "attaches" it to the top */
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 40px;
+            /* Height of the dark bar */
+
+            /* Background & Text Colors */
+            background-color: #2d3436;
+            /* Dark grey/black from image */
+            color: #ffffff;
+
+            /* Alignment & Typography */
+            display: flex;
+            align-items: center;
+            padding: 0 20px;
+            font-size: 0.95rem;
+            font-weight: normal;
+            /* Image uses a lighter weight for the header */
+            letter-spacing: 0.5px;
+            text-transform: none;
+            /* Adjust as needed */
+
+            /* Resetting your previous styles that conflict */
+            border: none;
+            border-left: none;
+            border-radius: 0;
+            margin-bottom: 0;
+            box-shadow: none;
+            /* font-weight: bold;
+            font-size: 1.1rem;
+            margin-bottom: 10px; */
+        }
+
+        .creative-task {
+            border-radius: 20px;
+            background-color: #ffffff;
+            border: 2px solid #0984e3;
+            padding: 10px;
+            margin: 20px 0;
+            box-shadow: 4px 4px 0px rgba(0, 0, 0, 0.1);
+        }
+
+        .ai-proof {
+            border-radius: 20px;
+            background-color: #f0f8ff;
+            border: 2px solid #0984e3;
+            padding: 10px;
+            margin: 20px 0;
+            box-shadow: 4px 4px 0px rgba(0, 0, 0, 0.1);
+        }
+
+        code {
+            font-family: "Fira Code", monospace;
+            background-color: #e3f9e5;
+            padding: 2px 4px;
+            border-radius: 3px;
+            font-size: 0.85em;
+        }
+
+        /* Smooth scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Back to top button */
+        #backToTop {
+            border-radius: 15px;
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background-color: var(--text-color);
+            color: #fff;
+            border: none;
+            padding: 10px 15px;
+            cursor: pointer;
+            font-family: inherit;
+            display: none;
+            box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+        }
+
+        #backToTop:hover {
+            background-color: #555;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="title-page">
+        <h1>PYTHON MASTERY</h1>
+        <h2>SYSTEMS ARCHITECTURE</h2>
+        <p>X2026 Professional Edition <br>
+            NOTE: <code>The syllabus may not work properly right now. it is still on updates</code></p>
+        <code>Version 1.3</code>
+        <p>Automated Environments | Distributed Task Engines | Secure Vaults</p>
+        <p style="margin-top: 3rem; font-weight: bold;">Architect's Handbook</p>
+    </div>
+
+    <div class="toc-container" id="toc">
+        <h2 class="toc-title">Syllabus Roadmap</h2>
+        <ul class="toc-list">
+            <li class="toc-item"><a href="#level-1">LEVEL 1: FUNDAMENTAL CONCEPTS</a>
+                <div class="toc-dots"></div><span>3</span>
+            </li>
+            <li class="toc-item"><a href="#module-1">Module 1: Python Environment & Basics</a>
+                <div class="toc-dots"></div><span>3</span>
+            </li>
+            <li class="toc-item"><a href="#module-2">Module 2: Operators, Logic & Control Flow</a>
+                <div class="toc-dots"></div><span>4</span>
+            </li>
+            <li class="toc-item"><a href="#module-3">Module 3: Loops, Iteration & Efficiency</a>
+                <div class="toc-dots"></div><span>5</span>
+            </li>
+            <li class="toc-item"><a href="#module-4">Module 4: Errors, Exceptions & Logging</a>
+                <div class="toc-dots"></div><span>6</span>
+            </li>
+            <li class="toc-item"><a href="#module-5">Module 5: Core Data Structures: List, Tuple & Set</a>
+                <div class="toc-dots"></div><span>7</span>
+            </li>
+            <li class="toc-item"><a href="#module-6">Module 6: Dictionaries & JSON Serialization</a>
+                <div class="toc-dots"></div><span>8</span>
+            </li>
+            <li class="toc-item"><a href="#module-7">Module 7: Functions: Deep Dive</a>
+                <div class="toc-dots"></div><span>9</span>
+            </li>
+            <li class="toc-item"><a href="#module-8">Module 8: Functional Programming Basics</a>
+                <div class="toc-dots"></div><span>10</span>
+            </li>
+            <li class="toc-item"><a href="#module-9">Module 9: Comprehensions (Full Breakdown)</a>
+                <div class="toc-dots"></div><span>11</span>
+            </li>
+            <li class="toc-item"><a href="#module-10">Module 10: Collections Module</a>
+                <div class="toc-dots"></div><span>12</span>
+            </li>
+
+            <li class="toc-item" style="margin-top: 15px;"><a href="#level-2">LEVEL 2: INTERMEDIATE PROGRAMMING</a>
+                <div class="toc-dots"></div><span>13</span>
+            </li>
+            <li class="toc-item"><a href="#module-11">Module 11: Modules, Packages & Decorators</a>
+                <div class="toc-dots"></div><span>13</span>
+            </li>
+            <li class="toc-item"><a href="#module-12">Module 12: Context Managers & Regex</a>
+                <div class="toc-dots"></div><span>14</span>
+            </li>
+            <li class="toc-item"><a href="#module-13">Module 13: OOP Fundamentals</a>
+                <div class="toc-dots"></div><span>15</span>
+            </li>
+            <li class="toc-item"><a href="#module-14">Module 14: Inheritance & Polymorphism</a>
+                <div class="toc-dots"></div><span>16</span>
+            </li>
+            <li class="toc-item"><a href="#module-15">Module 15: The Secure Architect</a>
+                <div class="toc-dots"></div><span>18</span>
+            </li>
+            <li class="toc-item"><a href="#module-16">Module 16: The Meta-Architect</a>
+                <div class="toc-dots"></div><span>19</span>
+            </li>
+            <li class="toc-item"><a href="#module-17">Module 17: The Linked List</a>
+                <div class="toc-dots"></div><span>20</span>
+            </li>
+            <li class="toc-item"><a href="#module-18">Module 18: Stacks & Queues</a>
+                <div class="toc-dots"></div><span>21</span>
+            </li>
+            <li class="toc-item"><a href="#module-19">Module 19: Trees & Binary Search</a>
+                <div class="toc-dots"></div><span>22</span>
+            </li>
+            <li class="toc-item"><a href="#module-20">Module 20: Heaps & Priority Queues</a>
+                <div class="toc-dots"></div><span>23</span>
+            </li>
+
+            <li class="toc-item" style="margin-top: 15px;"><a href="#level-3">LEVEL 3: PROFESSIONAL ARCHITECTURE</a>
+                <div class="toc-dots"></div><span>24</span>
+            </li>
+            <li class="toc-item"><a href="#module-21">Module 21: The Package Architect (uv)</a>
+                <div class="toc-dots"></div><span>24</span>
+            </li>
+            <li class="toc-item"><a href="#module-22">Module 22: Python Versions & Environments</a>
+                <div class="toc-dots"></div><span>25</span>
+            </li>
+            <li class="toc-item"><a href="#module-23">Module 23: Project Architecture (src/ & Dotenv)</a>
+                <div class="toc-dots"></div><span>26</span>
+            </li>
+            <li class="toc-item"><a href="#module-24">Module 24: Documentation</a>
+                <div class="toc-dots"></div><span>27</span>
+            </li>
+            <li class="toc-item"><a href="#module-25">Module 25: Typing & Pydantic</a>
+                <div class="toc-dots"></div><span>28</span>
+            </li>
+            <li class="toc-item"><a href="#module-26">Module 26: Formatting & Linting (Ruff & Black)</a>
+                <div class="toc-dots"></div><span>29</span>
+            </li>
+            <li class="toc-item"><a href="#module-27">Module 27: Unit Testing & Pytest</a>
+                <div class="toc-dots"></div><span>30</span>
+            </li>
+            <li class="toc-item"><a href="#module-28">Module 28: Mocking & Coverage</a>
+                <div class="toc-dots"></div><span>31</span>
+            </li>
+
+            <li class="toc-item" style="margin-top: 15px;"><a href="#level-4">LEVEL 4: HIGH PERFORMANCE & WEB DEV</a>
+                <div class="toc-dots"></div><span>33</span>
+            </li>
+            <li class="toc-item"><a href="#module-29">Module 29: Performance & The GIL</a>
+                <div class="toc-dots"></div><span>33</span>
+            </li>
+            <li class="toc-item"><a href="#module-30">Module 30: Threading & Multiprocessing</a>
+                <div class="toc-dots"></div><span>34</span>
+            </li>
+            <li class="toc-item"><a href="#module-31">Module 31: Asyncio Deep Dive</a>
+                <div class="toc-dots"></div><span>36</span>
+            </li>
+            <li class="toc-item"><a href="#module-32">Module 32: Asyncio Streams & Signals</a>
+                <div class="toc-dots"></div><span>37</span>
+            </li>
+            <li class="toc-item"><a href="#module-33">Module 33: Flask: Micro-Framework Architect</a>
+                <div class="toc-dots"></div><span>38</span>
+            </li>
+            <li class="toc-item"><a href="#module-34">Module 34: Django: Enterprise Powerhouse</a>
+                <div class="toc-dots"></div><span>39</span>
+            </li>
+            <li class="toc-item"><a href="#module-35">Module 35: Django Rest Framework (DRF)</a>
+                <div class="toc-dots"></div><span>41</span>
+            </li>
+            <li class="toc-item"><a href="#module-36">Module 36: Dash: Analytical Dashboard</a>
+                <div class="toc-dots"></div><span>42</span>
+            </li>
+            <li class="toc-item"><a href="#module-37">Module 37: FastAPI: Modern High-Speed Backbone</a>
+                <div class="toc-dots"></div><span>44</span>
+            </li>
+            <li class="toc-item"><a href="#module-38">Module 38: FastAPI: WebSockets & Live Comm</a>
+                <div class="toc-dots"></div><span>45</span>
+            </li>
+            <li class="toc-item"><a href="#module-39">Module 39: Background Tasks & Workers (Celery)</a>
+                <div class="toc-dots"></div><span>47</span>
+            </li>
+            <li class="toc-item"><a href="#module-40">Module 40: JWT Auth & Security</a>
+                <div class="toc-dots"></div><span>48</span>
+            </li>
+
+            <li class="toc-item" style="margin-top: 15px;"><a href="#level-5">LEVEL 5: ADVANCED TOPICS & CAPSTONE</a>
+                <div class="toc-dots"></div><span>50</span>
+            </li>
+            <li class="toc-item"><a href="#module-41">Module 41: Design Patterns</a>
+                <div class="toc-dots"></div><span>50</span>
+            </li>
+            <li class="toc-item"><a href="#module-42">Module 42: Database Optimization</a>
+                <div class="toc-dots"></div><span>51</span>
+            </li>
+            <li class="toc-item"><a href="#module-43">Module 43: Security</a>
+                <div class="toc-dots"></div><span>52</span>
+            </li>
+            <li class="toc-item"><a href="#module-44">Module 44: Docker & Containerization</a>
+                <div class="toc-dots"></div><span>53</span>
+            </li>
+            <li class="toc-item"><a href="#module-45">Module 45: Capstone - The Blueprint & Engine</a>
+                <div class="toc-dots"></div><span>54</span>
+            </li>
+            <li class="toc-item"><a href="#module-46">Module 46: Capstone - Background Worker</a>
+                <div class="toc-dots"></div><span>55</span>
+            </li>
+            <li class="toc-item"><a href="#module-47">Module 47: Capstone - Live Status & WebSockets</a>
+                <div class="toc-dots"></div><span>56</span>
+            </li>
+        </ul>
+    </div>
+
+    <h2 class="level-header" id="level-1">LEVEL 1: FUNDAMENTAL CONCEPTS</h2>
+
+    <div class="module" id="module-1">
+        <div class="module-title">MODULE 1 — Python Environment & Basics</div>
+        <div class="subtopics">
+            <strong><i class="fa fa-database"></i>Subtopics</strong>
+            <ul>
+                <li><strong>The Engine:</strong> Installing Python (Stable 3.12+). Understanding the difference between
+                    the CPython Interpreter and the Standard Library.</li>
+                <li><strong>Professional Tooling:</strong> <code>uv</code> (Modern Standard): Replacing <code>pip</code>
+                    and <code>venv</code>. Initializing projects with <code>uv init</code>. VSCode for Systems:
+                    Configuring <code>pyright</code> for static type checking and <code>Ruff</code> for lightning-fast
+                    linting.</li>
+                <li><strong>Execution & Bytecode:</strong> How <code>.py</code> files become <code>.pyc</code>
+                    (bytecode). Running modules via <code>python -m</code> vs. direct script execution.</li>
+                <li><strong>Memory & Variables:</strong> Naming (PEP 8): Why <code>snake_case</code> matters for
+                    grep-ability in large systems. Identity vs. Value: Introduction to <code>id()</code> and how Python
+                    stores objects in memory.</li>
+                <li><strong>Data Types & Type Hinting:</strong> <code>int</code>, <code>float</code>, <code>str</code>,
+                    <code>bool</code>. Mandatory: Using typing (e.g., <code>name: str = "Alice"</code>) to prevent
+                    runtime type errors.
+                </li>
+                <li><strong>Input/Output Systems:</strong> Advanced f-strings: Using <code>f"{var=}"</code> for
+                    self-documenting logs and <code>f"{num:.2f}"</code> for precision control. Stream Basics:
+                    Understanding <code>sys.stdin</code> and <code>sys.stdout</code> briefly.</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="module" id="module-2">
+        <div class="module-title">MODULE 2 — Operators, Logic & Control Flow</div>
+        <div class="subtopics">
+            <strong><i class="fa fa-database"></i>Subtopics</strong>
+            <ul>
+                <li><strong>Precision Arithmetic:</strong> The System Layer: <code>//</code> (Floor Division) and
+                    <code>%</code> (Modulo) for memory alignment.
+                </li>
+                <li><strong>Exponentiation:</strong> <code>**</code> operator and <code>pow(base, exp, mod)</code> for
+                    cryptographic efficiency.</li>
+                <li><strong>Bitwise Operations (Hardware Level):</strong> Binary representation and bit-masking using
+                    <code>&</code> (AND), <code>|</code> (OR), <code>^</code> (XOR), and <code>~</code> (NOT).
+                </li>
+                <li><strong>Shifting:</strong> <code>&lt;&lt;</code> and <code>&gt;&gt;</code> for rapid
+                    multiplication/division and flag manipulation.</li>
+                <li><strong>Boolean Algebra:</strong> Logical <code>and</code>, <code>or</code>, <code>not</code>.
+                    Short-Circuit Evaluation to prevent <code>AttributeError</code> or <code>ZeroDivisionError</code>.
+                    Identity vs. Equality: <code>==</code> (Value) vs. <code>is</code> (Memory address). The
+                    <code>None</code> singleton standard: <code>if x is None:</code>.
+                </li>
+                <li><strong>Structural Control Flow:</strong> Branching: <code>if</code> <code>elif</code>
+                    <code>else</code> hierarchies and Guard Clauses to avoid "Arrow Code." Pattern Matching (3.10+):
+                    <code>match</code> and <code>case</code> for command routing. Ternary Expressions: Inline
+                    conditional assignments for state management.
+                </li>
+                <li><strong>System Debugging:</strong> Breakpoint management and the "Watch" window in VSCode.</li>
+            </ul>
+        </div>
+        <div class="architect-box">
+            <i class="fa fa-lightbulb-o"></i>
+            <strong>The Architect's Perspective : </strong>
+            Senior devs use Bitwise Operators to manage permissions with minimal memory and Structural Pattern Matching
+            to keep logic flat.
+        </div>
+        <div class="task-box">
+            <div class="task-title"><i class="fa fa-shield"></i> Coding Task: The Kernel-Level Permission Engine
+            </div>
+            <p><strong>Objective:</strong> Build a Unix-style Permission Validator.</p>
+            <ol>
+                <li><strong>Bitmasking:</strong> Define READ = 4, WRITE = 2, EXECUTE = 1.</li>
+                <li><strong>Validation:</strong> Use Bitwise <code>&amp;</code> to check specific access (e.g., if code
+                    is 5, user has READ and EXECUTE).</li>
+                <li><strong>Routing:</strong> Use a <code>match/case</code> block for commands ("edit", "run"). Use
+                    <code>case _:</code> as a security wildcard.
+                </li>
+            </ol>
+        </div>
+        <div class="creative-task">
+            <strong><i class="fa fa-magic"></i>Creative Task:</strong> Map "Short-Circuit" logic in a login system
+            flow-chart.
+        </div>
+        <div class="ai-proof">
+            <strong><i class="fa fa-user-secret"></i>AI-Proof : </strong>
+            AI-Proof Test:</strong> Refactor nested <code>if</code> logic into a single <code>match</code> block
+            with Bitwise flags.
+        </div>
+    </div>
+
+    <div class="module" id="module-3">
+        <div class="module-title">MODULE 3 — Loops, Iteration & Efficiency</div>
+        <div class="subtopics">
+            <strong><i class="fa fa-database"></i>Subtopics</strong>
+            <ul>
+                <li><strong>The Iteration Engine:</strong> <code>for</code> loops vs. <code>while</code> loops: Bounded
+                    iteration vs. state-based polling. Using <code>while True:</code> for server listeners and hardware
+                    polling.</li>
+                <li><strong>Advanced Control Flow:</strong> <code>break</code>, <code>continue</code>, and
+                    <code>pass</code> for precision control. The <code>for...else</code> Pattern for "Search & Find"
+                    logic without extra flags.
+                </li>
+                <li><strong>Sequence Optimization:</strong>
+                    <ol>
+                        <li>
+                            <code>enumerate()</code>: Efficient index tracking for logs.
+                        </li>
+                        <li>
+                            <code>zip()</code>: Parallel iteration over multiple system streams.
+                        </li>
+                        <li>
+                            <code>reversed()</code> and <code>sorted()</code>: Handling data without mutating original
+                            state.
+                        </li>
+                    </ol>
+
+
+                </li>
+                <li><strong>Performance & Complexity (Big O):</strong> Understanding Time Complexity (O(<i>n</i>) vs.
+                    O(<i>n²</i>)).
+                    Why nested loops are the "Silent Killer."</li>
+                <li><strong>Space Complexity:</strong> Why <code>range()</code> is a "Lazy" generator that saves RAM
+                    compared to a List.</li>
+                <li><strong>Graceful Termination:</strong> Implementing a <code>KeyboardInterrupt</code> (Ctrl+C)
+                    handler for clean system shutdowns.</li>
+            </ul>
+        </div>
+        <div class="architect-box">
+            <i class="fa fa-lightbulb-o"></i>
+            <strong>The Architect's Perspective : </strong>
+            Senior Developers prioritize "Lazy Evaluation" processing one item at a time to keep memory usage low even
+            when data size is infinite.
+        </div>
+        <div class="task-box">
+            <div class="task-title"><i class="fa fa-shield"></i> Coding Task: The Log Stream Sentinel</div>
+            <p><strong>Objective:</strong> Process a massive log stream without loading it into RAM.</p>
+            <ol>
+                <li><strong>Filtering:</strong> Use a <code>for</code> loop with <code>continue</code> to skip all
+                    "INFO" logs instantly.</li>
+                <li><strong>Tracking:</strong> Use <code>enumerate</code> to print the line number of every "ERROR".
+                </li>
+                <li><strong>The Sentinel:</strong> If a <code>"CRITICAL"</code> error is found, use <code>break</code>
+                    to kill the
+                    process.</li>
+                <li><strong>Health Check:</strong> Use the <code>for...else</code> construct to report "System Healthy"
+                    only if no critical error was triggered.</li>
+            </ol>
+        </div>
+        <div class="creative-task">
+            <strong><i class="fa fa-magic"></i>Creative Task:</strong> Build an "Efficiency Map" comparing a Nested Loop
+            Search (O(n²)) vs. a
+            Dictionary Lookup (O(1)).
+        </div>
+        <div class="ai-proof">
+            <strong><i class="fa fa-user-secret"></i>AI-Proof : </strong> Refactor a nested loop element-finder into a
+            <code>Set</code>-based operation to achieve
+            O(n) complexity.
+        </div>
+    </div>
+
+    <div class="module" id="module-4">
+        <div class="module-title">MODULE 4 — Errors, Exceptions & Logging</div>
+        <div class="subtopics">
+            <strong><i class="fa fa-database"></i>Subtopics</strong>
+            <ul>
+                <li><strong>The Anatomy of Failure:</strong> <i>Syntax Errors </i> vs. <i>Exceptions.</i> Common System
+                    Exceptions: <code>FileNotFoundError</code>, <code>PermissionError</code>, <code>ValueError</code>,
+                    <code>KeyError</code>, and <code>ZeroDivisionError</code>.
+                </li>
+                <li><strong>Defensive Programming:</strong>
+                    <ul>
+                        <li> The <code>try...except</code> Block: Catching specific errors to avoid the security risks
+                            of a "Bare Except."</li>
+                        <li>
+                            <strong>Multiple Handlers:</strong> Differentiating logic for <code>ValueError</code> vs.
+                            <code>
+                        PermissionError
+                    </code>.
+                        </li>
+                        <li>
+                            The <code>else</code> & <code>finally</code> Clauses: Using
+                            <code>else</code> for success-only code and <code>finally</code> for resource cleanup
+                            (closing
+                            files/DBs).
+                        </li>
+                    </ul>
+
+
+                </li>
+                <li><strong>Raising & Custom Exceptions:</strong> The <code>raise</code> keyword for manual constraint
+                    violation and creating <i> Custom Exception Classes </i> (e.g.,
+                    <code>InsufficientBalanceError</code>).
+                </li>
+                <li><strong>Professional Logging:</strong>
+                    <ul>
+                        <li>
+                            The <code>logging</code> Module: Moving from <code>print()</code> to persistent system logs.
+                        </li>
+                        <li>
+                            <strong>Log Levels:</strong> <code>DEBUG</code>, <code>INFO</code>, <code>WARNING</code>,
+                            <code>ERROR</code>, <code>CRITICAL</code>.
+                        </li>
+                        <li>
+                            <strong>
+                                Handlers & Formatters:
+                            </strong>
+                            Saving logs to <code>app.log </code>with timestamps and line numbers.
+                        </li>
+                    </ul>
+
+                </li>
+                <li><strong>Traceback Analysis:</strong> Interpreting the "Stack Trace" to locate root causes.</li>
+            </ul>
+        </div>
+
+
+
+
+        <div class="architect-box">
+            <i class="fa fa-lightbulb-o"></i>
+            <strong>The Architect's Perspective : </strong>
+            "Hope is not a strategy." Senior Developers use <code>Robust Error Handling</code> to make systems
+            "Self-Healing." If a log can’t be written, the system must switch to backup, not die silently.
+
+        </div>
+        <div class="task-box">
+            <div class="task-title"><i class="fa fa-shield"></i> Coding Task: The Fault-Tolerant Transaction Manager
+            </div>
+            <p><strong>Objective:</strong> Build a transaction processor that refuses to crash.</p>
+            <ol>
+                <li><strong>Simulator:</strong> Create <code>process_transaction(amount: str, balance: float)</code>.
+                </li>
+                <li><strong>Logic:</strong> Catch <code>ValueError</code> for bad inputs; <code>raise</code> a custom
+                    <code>InadequateFundsError</code> if amount exceeds balance.
+                </li>
+                <li><strong>Persistence:</strong> Use a <code>finally</code> block to append the "Session Status" to
+                    <code>transactions.log</code> regardless of success or failure.
+                </li>
+                <li><strong>Constraint:</strong> The program must process all 5 attempts without terminating, no matter
+                    how many errors occur.</li>
+            </ol>
+        </div>
+        <div class="creative-task">
+            <strong><i class="fa fa-magic"></i>Creative Task:</strong> Draw the tree structure of Python's
+            <code>BaseException</code>. Highlight
+            where <code>Exception</code>
+            sits and why we never catch <code>KeyboardInterrupt</code> by mistake.
+        </div>
+        <div class="ai-proof">
+            <strong><i class="fa fa-user-secret"></i>AI-Proof : </strong> Refactor a bare <code>except:</code> into a
+            Multi-Level Handler that treats
+            <code>FileNotFoundError</code> as a warning and <code>PermissionError</code> as a critical failure using a
+            rotating log file.
+        </div>
+    </div>
+
+    <div class="module" id="module-5">
+        <div class="module-title">MODULE 5 — Core Data Structures: List, Tuple & Set</div>
+        <div class="subtopics">
+            <strong><i class="fa fa-database"></i>Subtopics</strong>
+            <ul>
+                <li><strong>Dynamic Arrays (Lists):</strong>
+                    <ol>
+                        <li><strong>Internal Working:</strong> How Python lists resize in memory (Amortized O(1)
+                            append).</li>
+                        <li><strong>Slicing & Mutation:</strong> <code>[start:stop:step]</code>,
+                            <code>append()</code>,<code>extend()</code>, <code>insert()</code>, <code>pop()</code>.
+                        </li>
+                        <li><strong>List Comprehensions: </strong>The professional way to transform data without
+                            multiple for loops.</li>
+                    </ol>
+                </li>
+                <li><strong>Immutable Sequences (Tuples):</strong>
+                    <ol>
+                        <li><strong>Tuples vs. Lists:</strong> Why Tuples are faster and safer for constant system data.
+                        </li>
+                        <li><strong>Unpacking: </strong>Using <code>*</code> (splat) and <code>_</code> (placeholder) to
+                            extract system configuration.</li>
+                        <li><strong>Named Tuples: </strong>Self-documenting data structures.</li>
+                    </ol>
+
+                </li>
+                <li><strong>Unordered Collections (Sets):</strong>
+                    <ol>
+                        <li><strong>The Hashing Engine:</strong> Why searching a Set is O(1) while
+                            a List is O(n).</li>
+                        <li><strong>Set Algebra: </strong> <code>union</code>, <code>intersection</code>,
+                            <code>difference</code>,
+                            and <code>symmetric_difference</code>. Deduplication: Efficiently removing duplicates from a
+                            system
+                            stream.
+                        </li>
+                    </ol>
+                </li>
+                <li><strong>Memory Efficiency:</strong>
+                    <ol>
+                        <li><code>sys.getsizeof(): </code>Comparing the RAM footprint of a List vs. Tuple vs. Set.</li>
+                        <li><strong>Frozen Sets:</strong> Creating immutable, hashable sets for dictionary keys.</li>
+                    </ol>
+
+                </li>
+            </ul>
+        </div>
+        <div class="architect-box">
+            <i class="fa fa-lightbulb-o"></i>
+            <strong>The Architect's Perspective : </strong>
+            We select data structures based on <strong>Access Patterns</strong>. If you need to check "Is this user
+            blocked?" 100,000
+            times a second, use a <code>Set</code>. We don't just store data; we optimize it for the CPU.
+        </div>
+        <div class="task-box">
+            <div class="task-title"><i class="fa fa-shield"></i> Coding Task: The High-Speed Firewall Simulator
+            </div>
+            <p><strong>Objective:</strong> Filter network traffic using the most efficient data structures.</p>
+            <ol>
+                <li><strong>Blacklist (Set):</strong> Create a set of 1,000 "Blocked IPs" (simulated).</li>
+                <li><strong>Log (List of Tuples):</strong> Store incoming traffic as
+                    <code>(timestamp, ip, status)</code>.
+                </li>
+                <li><strong>Filter Engine:</strong> Use <code>Set Intersection</code> to find blocked IPs and a
+                    <code>List Comprehension</code>
+                    for "Clean Traffic."
+                </li>
+                <li><strong>Efficiency Report:</strong> Use <code>time.time()</code> to measure how much faster a
+                    <code>Set</code>
+                    lookup is compared to searching a <code>List</code>of the same size.
+                </li>
+            </ol>
+        </div>
+        <div class="creative-task">
+            <strong><i class="fa fa-magic"></i>Creative Task:</strong> Create a comparison table for <code>List</code>
+            vs. <code>Set</code>
+            covering Add, Remove, and Search
+            time complexities. Highlight the "Gold Rule": <code>if x in my_set</code> is near-instant.
+        </div>
+        <div class="ai-proof">
+            <strong><i class="fa fa-user-secret"></i>AI-Proof : </strong> Refactor a nested loop element-finder into a
+            <code>Set</code>-based operation to achieve
+            O(1) lookup time for a million IDs.
+        </div>
+    </div>
+
+    <div class="module" id="module-6">
+        <div class="module-title">MODULE 6 — Dictionaries & JSON Serialization</div>
+
+        <div class="subtopics">
+            <strong><i class="fa fa-database"></i>Subtopics</strong>
+            <ul>
+                <li>
+                    <strong>The Hashmap Engine (Dictionaries):</strong>
+                    <ul>
+                        <li><strong>Internal Working:</strong> How Python maps keys to memory addresses (<code>O(1)</code> lookup).</li>
+                        <li><strong>Advanced Ops: </strong><code>get()</code> for safe access, <code>setdefault()</code>, and the
+                            <code>|</code> (merge) operator.</li>
+                        <li><strong>Dictionary Comprehensions:</strong> Transforming logs into status maps in a single line.</li>
+                    </ul>
+                </li>
+                <li>
+                    <strong>Nested Architecture:</strong> Representing system states: <i>Lists of
+                        Dictionaries</i> vs. <i>Dictionaries of Lists</i>. The "Deep Search" for nested
+                    configurations.
+                </li>
+                <li>
+                    <strong>JSON (JavaScript Object Notation):</strong>
+                    <ul>
+                        <li>The <code>json</code> Module: Difference between <code>json.dumps()</code> (string) and
+                            <code>json.dump()</code> (file).</li>
+                        <li>Serialization: Converting Python objects to universal data formats.</li>
+                        <li>The Serialization Trap: Fixing crashes caused by <code>datetime</code> or custom objects.
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <strong>Modern Features:</strong> Insertion order in 3.7+ and checking the
+                    <code>sys.getsizeof()</code> overhead.
+                </li>
+            </ul>
+        </div>
+
+        <div class="architect-box">
+            <i class="fa fa-lightbulb-o"></i>
+            <strong>The Architect's Perspective : </strong>
+            A Senior Developer treats a Dictionary as the <b>"System Registry."</b> We use <code>JSON</code>
+            as the universal language for <b>"State Persistence"</b>—ensuring a server can reboot and resume
+            exactly where it left off.
+        </div>
+
+        <div class="task-box">
+            <div class="task-title">
+                <i class="fa fa-shield"></i>Coding Task: The Persistent System Registry
+            </div>
+            <div class="task-content">
+                <ol>
+                    <li><strong>Registry:</strong> Create a nested dict:
+                        <code>{"hostname": "BIT-Server", "services": {"db": True}}</code>.</li>
+                    <li><strong>Update Logic:</strong> Write a function to update the nested state safely.</li>
+                    <li><strong>Recovery Mode:</strong> Use <code>json.load()</code> to check for an existing
+                        <code>config.json</code> and recover the system state on startup.</li>
+                    <li><strong>Safety Check:</strong> Use <code>.get()</code> with defaults to prevent any
+                        <code>KeyError</code>.</li>
+                </ol>
+            </div>
+        </div>
+
+        <div class="creative-task">
+            <strong><i class="fa fa-magic"></i>Creative Task:</strong>
+            Create a JSON-to-Python Data Map. Show how <code>None</code> becomes <code>null</code>,
+            <code>True</code> becomes <code>true</code>, and <code>dict</code> becomes <code>object</code>.
+        </div>
+
+        <div class="ai-proof">
+            <strong><i class="fa fa-user-secret"></i>AI-Proof : </strong>
+            Refactor a frequency-counting loop using <code>collections.Counter</code> or <code>dict.get(key, 0)</code>.
+            Save the result as a <strong>"pretty-printed"</strong> JSON file for human readability.
+        </div>
+    </div>
+
+
+    <div class="module" id="module-7">
+        <div class="module-title">MODULE 7 — Functions: Deep Dive</div>
+        <div class="subtopics">
+            <strong><i class="fa fa-database"></i>Subtopics</strong>
+            <ul>
+                <li><strong>The Function Lifecycle:</strong> Definition vs. Execution. Returning multiple values as a
+                    tuple and the None default.</li>
+                <li><strong>Advanced Parameter Architectures:</strong> Default Parameters: Avoiding the "Mutable Default
+                    Argument" trap (e.g., <code>data=[]</code>). Variadic Arguments: Mastering <code>*args</code> (Tuple
+                    packing) and <code>**kwargs</code> (Dictionary packing) for flexible APIs.</li>
+                <li><strong>The LEGB Scope Rule:</strong> Local, Enclosing, Global, and Built-in. Why to avoid
+                    <code>global</code> and <code>nonlocal</code> keywords.
+                </li>
+                <li><strong>First-Class Objects:</strong> Passing functions as arguments and returning them from other
+                    functions (The foundation of Decorators).</li>
+                <li><strong>Type Hinting in Functions:</strong> Using <code>Callable</code>, <code>Optional</code>, and
+                    <code>Union</code> from the typing module to define strict input/output contracts.
+                </li>
+            </ul>
+        </div>
+        <div class="architect-box">
+            <i class="fa fa-lightbulb-o"></i>
+            <strong>The Architect's Perspective : </strong>
+            A Senior Developer follows the Single Responsibility Principle. If a function is longer than 20 lines, the
+            architecture needs to be broken down. We use <code>*args</code> and <code>**kwargs</code> to build
+            extensible "Wrapper" functions.
+        </div>
+    </div>
+
+    <div class="module" id="module-13">
+        <div class="module-title">MODULE 13 — OOP Fundamentals (The Blueprint Creator)</div>
+        <div class="subtopics">
+            <strong><i class="fa fa-database"></i>Subtopics</strong>
+            <ul>
+                <li><strong>The Birth of an Object:</strong> The Blueprint vs. The House. The <code>__init__</code>
+                    Constructor. The <code>self</code> Mystery.</li>
+                <li><strong>Encapsulation (The Black Box):</strong> Access Modifiers: Using <code>_</code> vs
+                    <code>__</code> to protect sensitive data. The Interface Concept: Exposing "Buttons" while hiding
+                    the "Engine."
+                </li>
+                <li><strong>Behavior & State:</strong> Instance Methods. String Representations: Implementing
+                    <code>__str__</code> and <code>__repr__</code>.
+                </li>
+            </ul>
+        </div>
+        <div class="architect-box">
+            <i class="fa fa-lightbulb-o"></i>
+            <strong>The Architect's Perspective : </strong>
+            A Junior Developer sees a "Bank Account" as a float and loose functions. A Blueprint Architect sees it as an
+            encapsulated Object that validates its own withdrawals and protects its own state. We stop writing "Lines of
+            Code" and start designing "Systems of Entities."
+        </div>
+    </div>
+
+    <h2 class="level-header" id="level-4">LEVEL 4: HIGH PERFORMANCE & WEB DEVELOPMENT</h2>
+
+    <!-- MODULE 37: FASTAPI -->
+    <div class="module" id="module-37">
+        <div class="module-title">MODULE 37 — FastAPI: The Modern High-Speed Backbone</div>
+
+        <div class="subtopics">
+            <i class="fa fa-database"></i>
+            <strong>Subtopics</strong>
+            <ul>
+                <li>
+                    <strong>The ASGI Standard:</strong>
+                    <ul>
+                        <li><strong>Beyond WSGI:</strong> Understanding why the Asynchronous Server Gateway Interface is
+                            the
+                            architectural secret to 10,000+ requests per second.</li>
+                        <li><strong>Uvicorn & Starlette: </strong>Mastering the high-speed "Engine" and "Body" powering
+                            the FastAPI
+                            ecosystem.</li>
+                    </ul>
+                </li>
+                <li>
+                    <strong>The Schema Contract (Pydantic Integration):</strong>
+                    <ul>
+                        <li><strong>Auto-Validation: </strong>Why Type Hints mean you never manually check
+                            <code>if age is int</code> again.
+                        </li>
+                        <li><strong>Automatic OpenAPI (Swagger): </strong>How FastAPI constructs professional,
+                            interactive documentation
+                            websites in real-time as you code.</li>
+                    </ul>
+                </li>
+                <li>
+                    <strong>Modern Routing:</strong>
+                    <ul>
+                        <li><strong>Path & Query Parameters:</strong> Clean, strictly typed URL mapping (e.g.,
+                            <code>/users/{id}</code>).
+                        </li>
+                        <li><strong>Extraction:</strong> Harvesting JSON payloads and security headers with zero
+                            boilerplate logic.</li>
+                    </ul>
+                </li>
+                <li>
+                    <strong>The Serialization Engine:</strong>
+                    <ul>
+                        <li><strong>High-Speed I/O:</strong> Converting Python objects to JSON in milliseconds using the
+                            Rust-powered
+                            Pydantic V2 core.</li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+
+        <div class="architect-box">
+            <i class="fa fa-lightbulb-o"></i>
+            <strong>The Architect's Perspective : </strong>
+            A Junior Developer manually writes documentation and validates JSON strings. A <strong>FastAPI
+                Architect</strong> uses <strong>Type Hints</strong>. By simply adding <code>: int</code>, you Validate,
+            Document, and Optimize data simultaneously. We don’t "build" APIs; we <strong>declare</strong> them, and the
+            framework architecturally manifests the rest.
+        </div>
+
+        <div class="task-box">
+            <div class="task-title">Coding Task: The High-Performance Microservice</div>
+            <p><strong>Objective:</strong> Build a lightning-fast "Digital Vault" API that enforces byte-perfect data
+                validation.</p>
+            <ol>
+                <li><strong>The Fast Start:</strong> Initialize a FastAPI instance with a <code>@app.get("/")</code>
+                    "System Online" heartbeat.</li>
+                <li><strong>The Schema:</strong> Define a Pydantic <code>Item</code> model with <code>name</code>,
+                    <code>price</code>, and an optional <code>tax</code>.
+                </li>
+                <li><strong>The Postman:</strong> Implement <code>@app.post("/items/")</code>; verify the API rejects
+                    strings in numeric fields with a <code>422 Unprocessable Entity.</code></li>
+                <li><strong>The Documentation:</strong> Access <code>/docs</code> to interact with the auto-generated
+                    Swagger UI.</li>
+                <li><strong>The Performance Test:</strong> Use <code>locust</code> or <code>ab</code> to benchmark the
+                    API, targeting sub-millisecond response latencies.</li>
+            </ol>
+        </div>
+
+        <div class="creative-task">
+            <i class="fa fa-magic"></i>
+            <strong>Creative Task:</strong> Design "The Supersonic Jet" visual. Label the <strong>Engine</strong> as
+            ASGI/Uvicorn, the <strong>Sensors</strong> as Pydantic (detecting data turbulence), and the <strong>Cockpit
+                HUD</strong> as Swagger UI. Slogan: <i>"Speed + Precision.</i>"
+        </div>
+
+        <div class="ai-proof">
+            <i class="fa fa-user-secret"></i>
+            <strong>AI-Proof Test:</strong> Research why FastAPI outperforms Flask for <strong>I/O-Heavy</strong> tasks
+            via the <code>async</code> keyword. Ask the AI: "Provide a <strong>Migration Blueprint</strong> to port 10
+            Flask routes to FastAPI. What is the FastAPI equivalent of Flask’s <code>request.args</code>?"
+        </div>
+    </div>
+
+
+    <h2 class="level-header" id="level-5">LEVEL 5: ADVANCED TOPICS & CAPSTONE</h2>
+
+    <div class="module" id="module-45">
+        <div class="module-title">MODULE 45 — Capstone: The Blueprint & Core Engine</div>
+        <div class="subtopics">
+            <strong><i class="fa fa-database"></i>Subtopics</strong>
+            <ul>
+                <li><strong>System Architecture Design:</strong> The Three-Tiered Power: Orchestrating the API
+                    (FastAPI), the Broker (Redis), and the Worker (Celery). The Shared Memory: Utilizing PostgreSQL.
+                </li>
+                <li><strong>The Async Heartbeat:</strong> Non-Blocking Intake: Architecting an API that ingests 1,000
+                    tasks/sec and returns a "Ticket ID" in O(1) time.</li>
+                <li><strong>The Database Schema:</strong> Model Definition: Crafting a Task schema with payload, status,
+                    retry_count, and scheduled_time.</li>
+            </ul>
+        </div>
+        <div class="architect-box">
+            <i class="fa fa-lightbulb-o"></i>
+            <strong>The Architect's Perspective : </strong>
+            A Junior Developer builds a script that runs one task and crashes on reboot. A Systems Architect builds a
+            Distributed Engine. We decouple the "Brain" (API) from the "Muscle" (Worker). This is Fault-Tolerant
+            Engineering.
+        </div>
+        <div class="creative-task"
+            style="text-align: center; margin-top: 50px; font-size: 1.5rem; background: transparent; border: none; font-weight: bold;">
+            FINALLY, YOU ARE A REAL WORLD DEVELOPER<br>
+            Language Mastery | Systems Engineering | Production Architecture<br>
+            <span style="font-style: italic; font-weight: normal; font-size: 1.2rem;">"Code is easy. Architecture is
+                hard. You have mastered both."</span><br>
+            © 2026 Senior Architect Editions.
+        </div>
+    </div>
+
+    <button id="backToTop" title="Go to top">↑ Top</button>
+
+    <script>
+        // Smooth scroll script for TOC and Back to Top
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Back to top button logic
+        let mybutton = document.getElementById("backToTop");
+        window.onscroll = function () { scrollFunction() };
+
+        function scrollFunction() {
+            if (document.body.scrollTop > 500 || document.documentElement.scrollTop > 500) {
+                mybutton.style.display = "block";
+            } else {
+                mybutton.style.display = "none";
+            }
+        }
+
+        mybutton.addEventListener("click", function () {
+            const tocElement = document.getElementById("toc");
+            if (tocElement) {
+                tocElement.scrollIntoView({ behavior: "smooth", block: "start" });
+            }
+        });
+
+    </script>
+</body>
+
+</html>
