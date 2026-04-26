@@ -3,9 +3,24 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=1280">
     <link rel="icon" type="image/png" href="../favicon/hemlex_favicon.ico">
     <title>Python Mastery: Systems Architecture</title>
+    <meta name="title" content="Python Mastery: Systems Architecture - HemLex Edition">
+    <meta name="description"
+        content="A comprehensive professional roadmap for mastering Python Systems Architecture, from kernel-level logic to distributed task engines and FastAPI high-speed backbones.">
+    <meta name="author" content="HemLex / Hem Khatri">
+
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Python Mastery: Systems Architecture">
+    <meta property="og:description"
+        content="Master automated environments, secure vaults, and production-grade Python architecture. Created by HemLex for the X2026 Professional Edition.">
+
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:title" content="Python Mastery: Systems Architecture">
+    <meta property="twitter:description"
+        content="The Architect's Handbook for high-performance Python development and distributed systems.">
+
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/bitmaks/cm-web-fonts@latest/fonts.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
@@ -33,7 +48,103 @@
             padding: 2rem 4rem;
             text-align: justify;
             background-color: #ffffff;
+            min-width: 1280px;
+            overflow-x: auto;
+            background-color: white;
+            color: black;
+            transition: background-color 0.3s, color 0.3s;
+            /* Smooth transition */
         }
+
+        /* Dark Mode Styles */
+        body.dark-mode {
+            background-color: #121212;
+            color: white;
+        }
+
+        /* Ensure all divs, paragraphs, and headings inside body.dark-mode turn white */
+        body.dark-mode div,
+        body.dark-mode p,
+        body.dark-mode h1,
+        body.dark-mode h2,
+        body.dark-mode li {
+            color: white !important;
+            /* !important ensures it overrides other styles */
+        }
+
+        body.dark-mode a,
+        body.dark-mode .module-title {
+            color: #add8e6;
+            /* A lighter blue that's easier to read on dark backgrounds */
+        }
+
+        /* 1. Target the box/card specifically */
+        body.dark-mode .module,
+        body.dark-mode code,
+        body.dark-mode div {
+            background-color: #1e1e1e !important;
+            /* A slightly lighter dark for cards */
+            border: 1px solid #333;
+            /* Optional: adds a subtle outline */
+        }
+
+        /* 2. Ensure the text inside the card is bright enough */
+        body.dark-mode .module *,
+        body.dark-mode div * {
+            color: #e0e0e0 !important;
+        }
+
+        #theme-toggle {
+            /* Positioning - Fixed to the top right corner */
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+
+            /* Sizing and Shape */
+            padding: 12px 24px;
+            border-radius: 50px;
+            /* Rounded pill shape */
+            border: 2px solid #333;
+
+            /* Typography */
+            font-family: 'Inter', sans-serif;
+            font-weight: 600;
+            font-size: 14px;
+            cursor: pointer;
+
+            /* Smooth Transitions */
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Light Mode Appearance (Default) */
+        #theme-toggle {
+            background-color: #ffffff;
+            color: #333;
+        }
+
+        /* Dark Mode Appearance (When body has .dark-mode) */
+        body.dark-mode #theme-toggle {
+            background-color: #2d2d2d;
+            color: #ffffff;
+            border-color: #00ffc3;
+            /* A nice neon accent */
+            box-shadow: 0 4px 15px rgba(0, 255, 195, 0.3);
+        }
+
+        /* Hover Effects */
+        #theme-toggle:hover {
+            transform: translateY(-2px);
+            /* Slight lift */
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        #theme-toggle:active {
+            transform: translateY(0);
+            /* Press down effect */
+        }
+
 
         /* Title Page */
         .title-page {
@@ -361,6 +472,8 @@
 </head>
 
 <body>
+    <button id="theme-toggle">Switch to Dark Mode</button>
+
 
     <div class="title-page">
         <h1>PYTHON MASTERY</h1>
@@ -886,10 +999,14 @@
                 <li>
                     <strong>The Hashmap Engine (Dictionaries):</strong>
                     <ul>
-                        <li><strong>Internal Working:</strong> How Python maps keys to memory addresses (<code>O(1)</code> lookup).</li>
-                        <li><strong>Advanced Ops: </strong><code>get()</code> for safe access, <code>setdefault()</code>, and the
-                            <code>|</code> (merge) operator.</li>
-                        <li><strong>Dictionary Comprehensions:</strong> Transforming logs into status maps in a single line.</li>
+                        <li><strong>Internal Working:</strong> How Python maps keys to memory addresses
+                            (<code>O(1)</code> lookup).</li>
+                        <li><strong>Advanced Ops: </strong><code>get()</code> for safe access,
+                            <code>setdefault()</code>, and the
+                            <code>|</code> (merge) operator.
+                        </li>
+                        <li><strong>Dictionary Comprehensions:</strong> Transforming logs into status maps in a single
+                            line.</li>
                     </ul>
                 </li>
                 <li>
@@ -901,7 +1018,8 @@
                     <strong>JSON (JavaScript Object Notation):</strong>
                     <ul>
                         <li>The <code>json</code> Module: Difference between <code>json.dumps()</code> (string) and
-                            <code>json.dump()</code> (file).</li>
+                            <code>json.dump()</code> (file).
+                        </li>
                         <li>Serialization: Converting Python objects to universal data formats.</li>
                         <li>The Serialization Trap: Fixing crashes caused by <code>datetime</code> or custom objects.
                         </li>
@@ -929,12 +1047,15 @@
             <div class="task-content">
                 <ol>
                     <li><strong>Registry:</strong> Create a nested dict:
-                        <code>{"hostname": "BIT-Server", "services": {"db": True}}</code>.</li>
+                        <code>{"hostname": "BIT-Server", "services": {"db": True}}</code>.
+                    </li>
                     <li><strong>Update Logic:</strong> Write a function to update the nested state safely.</li>
                     <li><strong>Recovery Mode:</strong> Use <code>json.load()</code> to check for an existing
-                        <code>config.json</code> and recover the system state on startup.</li>
+                        <code>config.json</code> and recover the system state on startup.
+                    </li>
                     <li><strong>Safety Check:</strong> Use <code>.get()</code> with defaults to prevent any
-                        <code>KeyError</code>.</li>
+                        <code>KeyError</code>.
+                    </li>
                 </ol>
             </div>
         </div>
@@ -955,57 +1076,1404 @@
 
     <div class="module" id="module-7">
         <div class="module-title">MODULE 7 — Functions: Deep Dive</div>
+
         <div class="subtopics">
             <strong><i class="fa fa-database"></i>Subtopics</strong>
             <ul>
-                <li><strong>The Function Lifecycle:</strong> Definition vs. Execution. Returning multiple values as a
-                    tuple and the None default.</li>
-                <li><strong>Advanced Parameter Architectures:</strong> Default Parameters: Avoiding the "Mutable Default
-                    Argument" trap (e.g., <code>data=[]</code>). Variadic Arguments: Mastering <code>*args</code> (Tuple
-                    packing) and <code>**kwargs</code> (Dictionary packing) for flexible APIs.</li>
-                <li><strong>The LEGB Scope Rule:</strong> Local, Enclosing, Global, and Built-in. Why to avoid
-                    <code>global</code> and <code>nonlocal</code> keywords.
+                <li>
+                    <strong>The Function Lifecycle:</strong>
+                    Understanding <i>Definition vs Execution</i>, returning multiple values as tuples,
+                    and why functions return <code>None</code> by default when no explicit return exists.
                 </li>
-                <li><strong>First-Class Objects:</strong> Passing functions as arguments and returning them from other
-                    functions (The foundation of Decorators).</li>
-                <li><strong>Type Hinting in Functions:</strong> Using <code>Callable</code>, <code>Optional</code>, and
-                    <code>Union</code> from the typing module to define strict input/output contracts.
+
+                <li>
+                    <strong>Advanced Parameter Architectures:</strong>
+                    <ul>
+                        <li>
+                            <strong>Default Parameters:</strong>
+                            Avoiding the dangerous
+                            <code>Mutable Default Argument</code> trap
+                            (e.g., <code>data=[]</code>).
+                        </li>
+                        <li>
+                            <strong>Variadic Arguments:</strong>
+                            Mastering <code>*args</code> (Tuple packing) and
+                            <code>**kwargs</code> (Dictionary packing) for flexible APIs.
+                        </li>
+                    </ul>
+                </li>
+
+                <li>
+                    <strong>The LEGB Scope Rule:</strong>
+                    Understanding
+                    <code>Local</code>,
+                    <code>Enclosing</code>,
+                    <code>Global</code>, and
+                    <code>Built-in</code> scope resolution.
+                    Why overusing <code>global</code> and <code>nonlocal</code> creates debugging nightmares.
+                </li>
+
+                <li>
+                    <strong>First-Class Objects:</strong>
+                    Passing functions as arguments and returning them from other functions —
+                    the foundation of decorators and callback systems.
+                </li>
+
+                <li>
+                    <strong>Type Hinting in Functions:</strong>
+                    Using
+                    <code>Callable</code>,
+                    <code>Optional</code>, and
+                    <code>Union</code> from the
+                    <code>typing</code> module to create strict function contracts.
                 </li>
             </ul>
         </div>
+
         <div class="architect-box">
             <i class="fa fa-lightbulb-o"></i>
             <strong>The Architect's Perspective : </strong>
-            A Senior Developer follows the Single Responsibility Principle. If a function is longer than 20 lines, the
-            architecture needs to be broken down. We use <code>*args</code> and <code>**kwargs</code> to build
-            extensible "Wrapper" functions.
+            Senior Developers follow the
+            <b>"Single Responsibility Principle."</b>
+            If a function exceeds
+            <code>20+</code> lines, it usually signals poor architecture.
+            We use <code>*args</code> and <code>**kwargs</code> to build flexible wrapper systems that scale.
+        </div>
+
+        <div class="task-box">
+            <div class="task-title">
+                <i class="fa fa-shield"></i>Coding Task: The Modular System Plugin
+            </div>
+
+            <div class="task-content">
+                <ol>
+                    <li>
+                        <strong>Core Engine:</strong>
+                        Write
+                        <code>log_event(msg: str, **metadata)</code>
+                        to accept unlimited extra metadata such as severity, timestamps, or user details.
+                    </li>
+
+                    <li>
+                        <strong>Processor:</strong>
+                        Build
+                        <code>process_alert(alert_type: str, *tags, **details)</code>.
+                        Use <code>*tags</code> for affected components and forward
+                        <code>**details</code> into the logging engine.
+                    </li>
+
+                    <li>
+                        <strong>Validation:</strong>
+                        Create a "Gatekeeper" function that verifies admin permissions before processing alerts.
+                    </li>
+
+                    <li>
+                        <strong>Type Safety:</strong>
+                        Add strict type hints so tools like
+                        <code>Pyright</code> or static analyzers catch issues before runtime.
+                    </li>
+                </ol>
+            </div>
+        </div>
+
+        <div class="creative-task">
+            <strong><i class="fa fa-magic"></i>Creative Task:</strong>
+            Visualize the <b>LEGB Rule</b> by mapping a variable
+            <code>x</code> defined in four places:
+            <code>Local → Enclosing → Global → Built-in</code>.
+            Show Python’s variable search priority flow.
+        </div>
+
+        <div class="ai-proof">
+            <strong><i class="fa fa-user-secret"></i>AI-Proof : </strong>
+            Refactor a basic
+            <code>sum()</code>-style function into a universal math wrapper using
+            <code>*args</code> and <code>**kwargs</code>.
+            Then explain the dangerous memory bug caused by mutable default arguments.
+        </div>
+    </div>
+
+    <div class="module" id="module-8">
+        <div class="module-title">MODULE 8 — Functional Programming Basics</div>
+
+        <div class="subtopics">
+            <strong><i class="fa fa-database"></i>Subtopics</strong>
+            <ul>
+                <li>
+                    <strong>Anonymous Logic (Lambdas):</strong>
+                    The one-liner <code>lambda x: x * 2</code> for throwaway logic.
+                    Understanding the trade-off between readability and speed.
+                </li>
+
+                <li>
+                    <strong>The "Big Three" Higher-Order Functions:</strong>
+                    <ul>
+                        <li><strong><code>map()</code>:</strong> Transforming every item in a stream (e.g., UTC time
+                            conversions).</li>
+                        <li><strong><code>filter()</code>:</strong> Removing noise from data (e.g., keeping only
+                            <code>ERROR</code> packets).
+                        </li>
+                        <li><strong><code>reduce()</code>:</strong> Using <code>functools.reduce()</code> to aggregate
+                            data into a single value (e.g., total downtime calculation).</li>
+                    </ul>
+                </li>
+
+                <li>
+                    <strong>Iterables & Iterators:</strong>
+                    Understanding lazy evaluation — <code>map()</code> and <code>filter()</code> do not execute until
+                    requested.
+                    Manually consuming data using <code>next()</code> and handling <code>StopIteration</code>.
+                </li>
+
+                <li>
+                    <strong>Stream Utilities:</strong>
+                    Using <code>zip()</code> for merging streams,
+                    <code>enumerate()</code> for indexed iteration, and
+                    <code>any()</code>/<code>all()</code> for professional short-circuit validation.
+                </li>
+
+                <li>
+                    <strong>Generators (Intro):</strong>
+                    Using the <code>yield</code> keyword to create memory-efficient streams for processing
+                    massive files (10GB+ logs, datasets, etc.).
+                </li>
+            </ul>
+        </div>
+
+        <div class="architect-box">
+            <i class="fa fa-lightbulb-o"></i>
+            <strong>The Architect's Perspective : </strong>
+            Senior Developers use Functional Programming to eliminate
+            <b>"Side Effects."</b> If a function modifies global state, debugging becomes painful.
+            Pure functions that return new streams are <b>Thread-Safe</b>, predictable, and highly scalable.
+        </div>
+
+        <div class="task-box">
+            <div class="task-title">
+                <i class="fa fa-shield"></i>Coding Task: The Real-Time Packet Filter
+            </div>
+
+            <div class="task-content">
+                <ol>
+                    <li>
+                        <strong>Transformation:</strong> Use <code>map()</code> with a
+                        <code>lambda</code> to increase packet <code>size_kb</code> by 10%
+                        (simulating header overhead).
+                    </li>
+
+                    <li>
+                        <strong>Filtering:</strong> Use <code>filter()</code> to keep only packets where
+                        <code>protocol == "TCP"</code> and size is greater than <code>50KB</code>.
+                    </li>
+
+                    <li>
+                        <strong>Validation:</strong> Use <code>all()</code> to verify every remaining packet is marked
+                        as
+                        <code>"SECURE"</code>.
+                    </li>
+
+                    <li>
+                        <strong>Requirement:</strong> Chain everything into a single pipeline using
+                        <code>list(filter(..., map(...)))</code> without using any traditional
+                        <code>for</code> loops.
+                    </li>
+                </ol>
+            </div>
+        </div>
+
+        <div class="creative-task">
+            <strong><i class="fa fa-magic"></i>Creative Task:</strong>
+            Draw a <b>"Factory Assembly Line"</b> diagram showing:
+            <code>Raw Material (List) → Quality Control (filter) → Painting (map) → Packaging (reduce)</code>.
+        </div>
+
+        <div class="ai-proof">
+            <strong><i class="fa fa-user-secret"></i>AI-Proof : </strong>
+            Refactor a traditional loop that squares even numbers into a single functional pipeline using
+            <code>map()</code> and <code>filter()</code>. Then explain why iterators consume significantly less memory
+            than lists.
+        </div>
+    </div>
+
+    <div class="module" id="module-9">
+        <div class="module-title">MODULE 9 — Comprehensions (Full Breakdown)</div>
+
+        <div class="subtopics">
+            <strong><i class="fa fa-database"></i>Subtopics</strong>
+            <ul>
+                <li>
+                    <strong>List Comprehensions (The Workhorse):</strong>
+                    <ul>
+                        <li><strong>Basic LC:</strong> <code>[x for x in data]</code> — Replacing traditional
+                            <code>append()</code> loops.
+                        </li>
+                        <li><strong>Conditional LC:</strong> <code>[x for x in data if condition]</code> — Built-in
+                            filtering.</li>
+                        <li><strong>Nested LC:</strong> Flattening matrices or logs using
+                            <code>[item for sublist in logs for item in sublist]</code>.
+                        </li>
+                    </ul>
+                </li>
+
+                <li>
+                    <strong>Dictionary Comprehensions (The Mapper):</strong>
+                    <ul>
+                        <li><strong>Key-Value Transformation:</strong> Swapping keys and values in configuration
+                            systems.</li>
+                        <li><strong>Conditional DC:</strong> Creating status maps like
+                            <code>{uid: "Active" for uid in users if uid in sessions}</code>.
+                        </li>
+                    </ul>
+                </li>
+
+                <li>
+                    <strong>Set Comprehensions (The Deduplicator):</strong>
+                    Extract unique tags, IDs, or error codes instantly using
+                    <code>{x for x in data}</code>.
+                </li>
+
+                <li>
+                    <strong>Generator Expressions (The Performance King):</strong>
+                    <ul>
+                        <li><strong>Lazy Evaluation:</strong> Using
+                            <code>(x for x in data)</code> instead of brackets.
+                        </li>
+                        <li><strong>Memory Benchmarking:</strong> Why a List Comprehension may consume ~80MB for 1M
+                            items while a Generator may use only a few bytes.</li>
+                    </ul>
+                </li>
+
+                <li>
+                    <strong>Advanced Logic:</strong>
+                    Using inline ternary logic inside comprehensions:
+                    <code>[val if cond else other for val in data]</code>.
+                </li>
+            </ul>
+        </div>
+
+        <div class="architect-box">
+            <i class="fa fa-lightbulb-o"></i>
+            <strong>The Architect's Perspective : </strong>
+            Senior Developers use comprehensions to keep code
+            <b>"Expressive and Compact."</b> But when processing streams larger than
+            <code>10,000+</code> items, we switch to Generator Expressions to maintain
+            <b>O(1) space complexity</b> and avoid memory bottlenecks.
+        </div>
+
+        <div class="task-box">
+            <div class="task-title">
+                <i class="fa fa-shield"></i>Coding Task: The Infinite Log Aggregator
+            </div>
+
+            <div class="task-content">
+                <ol>
+                    <li>
+                        <strong>Filter:</strong> Use a List Comprehension to extract sensor IDs where
+                        <code>temp > 75.0</code>.
+                    </li>
+
+                    <li>
+                        <strong>Status Map:</strong> Use a Dictionary Comprehension to map IDs to
+                        <code>"CRITICAL"</code> if temperature exceeds
+                        <code>90</code>, otherwise <code>"WARNING"</code>.
+                    </li>
+
+                    <li>
+                        <strong>Memory Test:</strong> Create a Generator Expression to calculate average temperature.
+                        Use <code>sys.getsizeof()</code> to compare it against a List Comprehension.
+                    </li>
+
+                    <li>
+                        <strong>Transformation:</strong> Use a Set Comprehension to extract all unique
+                        <code>status</code> values from sensor logs.
+                    </li>
+                </ol>
+            </div>
+        </div>
+
+        <div class="creative-task">
+            <strong><i class="fa fa-magic"></i>Creative Task:</strong>
+            Create a <b>"Comprehension Cheat Sheet"</b> grid showing syntax for:
+            <code>List []</code>,
+            <code>Set {}</code>,
+            <code>Dict {k:v}</code>, and
+            <code>Generator ()</code>.
+            <br><br>
+            <strong>Slogan:</strong> <i>"Brackets for Memory, Parentheses for Speed."</i>
+        </div>
+
+        <div class="ai-proof">
+            <strong><i class="fa fa-user-secret"></i>AI-Proof : </strong>
+            Refactor a nested loop flattener into a Nested List Comprehension.
+            Then explain why placing
+            <code>if</code> at the end is better for filtering than using a ternary at the start.
+        </div>
+    </div>
+
+    <div class="module" id="module-10">
+        <div class="module-title">MODULE 10 — Collections Module (The Specialist’s Toolkit)</div>
+
+        <div class="subtopics">
+            <strong><i class="fa fa-database"></i>Subtopics</strong>
+            <ul>
+                <li>
+                    <strong>Performance Sequences (<code>deque</code>):</strong>
+                    <ul>
+                        <li><strong>Double-Ended Queues:</strong> Why <code>list.pop(0)</code> is
+                            <code>O(n)</code> while <code>deque.popleft()</code> is
+                            <code>O(1)</code>.
+                        </li>
+                        <li><strong>Rotation & Maxlen:</strong> Creating circular buffers
+                            (e.g., storing only the last 10 system logs).
+                        </li>
+                    </ul>
+                </li>
+
+                <li>
+                    <strong>Self-Documenting Data (<code>namedtuple</code>):</strong>
+                    Creating lightweight, immutable "classes without methods."
+                    More memory-efficient than dictionaries when handling millions of records.
+                </li>
+
+                <li>
+                    <strong>Automated Mapping (<code>defaultdict</code>):</strong>
+                    Eliminating repetitive
+                    <code>if key not in dict</code> checks by using
+                    <code>list</code>, <code>int</code>, or custom default factories.
+                </li>
+
+                <li>
+                    <strong>Frequency Analysis (<code>Counter</code>):</strong>
+                    <ul>
+                        <li><strong>The System Auditor:</strong> Instantly counting values in a stream.</li>
+                        <li><strong>Multiset Operations:</strong> Adding/subtracting counters like
+                            <code>New_Logs - Old_Logs</code>.
+                        </li>
+                    </ul>
+                </li>
+
+                <li>
+                    <strong>Configuration Layering (<code>ChainMap</code>):</strong>
+                    Searching across multiple dictionaries
+                    (<code>Local → User → Global</code>) in a single lookup.
+                </li>
+
+                <li>
+                    <strong>Ordering & Extension:</strong>
+                    When to use <code>OrderedDict</code>,
+                    <code>UserDict</code>, and <code>UserList</code> for customized behavior.
+                </li>
+            </ul>
+        </div>
+
+        <div class="architect-box">
+            <i class="fa fa-lightbulb-o"></i>
+            <strong>The Architect's Perspective : </strong>
+            Algorithm complexity is often solved by choosing the correct data structure.
+            If you're building an <b>"Undo"</b> system, use a <code>deque</code>.
+            If you're tracking frequency spikes, use a <code>Counter</code>.
+            The right tool reduces <b>Big O complexity</b> without rewriting business logic.
+        </div>
+
+        <div class="task-box">
+            <div class="task-title">
+                <i class="fa fa-shield"></i>Coding Task: The Real-Time System Auditor
+            </div>
+
+            <div class="task-content">
+                <ol>
+                    <li>
+                        <strong>Error Counter:</strong> Ingest 500 random error codes
+                        (<code>404</code>, <code>500</code>, etc.) into a
+                        <code>Counter</code>.
+                    </li>
+
+                    <li>
+                        <strong>Rolling Buffer:</strong> Use
+                        <code>deque(maxlen=10)</code> for critical alerts.
+                        Prove that inserting an 11th alert removes the first.
+                    </li>
+
+                    <li>
+                        <strong>User Registry:</strong> Use
+                        <code>defaultdict(list)</code> to map user IDs to actions
+                        without manual list initialization.
+                    </li>
+
+                    <li>
+                        <strong>Hardware Record:</strong> Create a
+                        <code>namedtuple</code> called
+                        <code>SystemSnapshot(cpu, ram, disk)</code> and store 5 records.
+                    </li>
+
+                    <li>
+                        <strong>Layering:</strong> Use
+                        <code>ChainMap</code> to combine
+                        <code>Default_Settings</code> and
+                        <code>User_Overrides</code>.
+                    </li>
+                </ol>
+            </div>
+        </div>
+
+        <div class="creative-task">
+            <strong><i class="fa fa-magic"></i>Creative Task:</strong>
+            Design a <b>"Specialist’s Toolbox"</b> grid:
+            <code>deque</code> → Conveyor Belt,
+            <code>Counter</code> → Tally Machine,
+            <code>namedtuple</code> → Label Maker,
+            <code>defaultdict</code> → Safety Net.
+        </div>
+
+        <div class="ai-proof">
+            <strong><i class="fa fa-user-secret"></i>AI-Proof : </strong>
+            Refactor a manual word-counting loop into a one-line
+            <code>Counter()</code> solution.
+            Then use <code>.most_common(3)</code> to identify top frequency spikes.
+        </div>
+    </div>
+
+    <h2 class="level-header" id="level-2">LEVEL 2: INTERMEDIATE PROGRAMMING</h2>
+
+    <div class="module" id="module-11">
+        <div class="module-title">MODULE 11 — Modules, Packages & Decorators</div>
+
+        <div class="subtopics">
+            <strong><i class="fa fa-database"></i>Subtopics</strong>
+            <ul>
+                <li>
+                    <strong>The Internal Wiring (Closures & Scopes):</strong>
+                    <ul>
+                        <li>
+                            <strong>Memory of Functions:</strong>
+                            Understanding how nested functions remember parent variables through
+                            <i>Lexical Scoping</i>.
+                        </li>
+                        <li>
+                            <strong>The LEGB Rule:</strong>
+                            Variable lookup hierarchy:
+                            <code>Local → Enclosing → Global → Built-in</code>.
+                        </li>
+                    </ul>
+                </li>
+
+                <li>
+                    <strong>Function Augmentation (Decorators):</strong>
+                    <ul>
+                        <li>
+                            <strong>The <code>@</code> Magic:</strong>
+                            Injecting logging, authentication, validation, and monitoring logic
+                            without modifying core function code.
+                        </li>
+                        <li>
+                            <strong>Wrappers & <code>functools.wraps</code>:</strong>
+                            Preserving function metadata for debugging and maintainability.
+                        </li>
+                        <li>
+                            <strong>Swiss Army Decorators:</strong>
+                            Building utilities like
+                            <code>@timer</code> for performance monitoring and
+                            <code>@slow_down</code> for rate limiting.
+                        </li>
+                    </ul>
+                </li>
+
+                <li>
+                    <strong>Structural Engineering (Modules & Packages):</strong>
+                    <ul>
+                        <li>
+                            <strong>The <code>__init__.py</code> Secret:</strong>
+                            Turning folders into importable Python packages.
+                        </li>
+                        <li>
+                            <strong>The <code>if __name__ == "__main__"</code> Shield:</strong>
+                            Preventing test code from executing during imports.
+                        </li>
+                        <li>
+                            <strong>Imports:</strong>
+                            Solving
+                            <code>ModuleNotFoundError</code> using absolute vs relative imports.
+                        </li>
+                    </ul>
+                </li>
+
+                <li>
+                    <strong>Advanced Pattern:</strong>
+                    Using <code>@lru_cache</code> for instant memoization and avoiding redundant computations.
+                </li>
+            </ul>
+        </div>
+
+        <div class="architect-box">
+            <i class="fa fa-lightbulb-o"></i>
+            <strong>The Architect's Perspective : </strong>
+            A junior developer copies timer logic into every function.
+            A professional architect writes one reusable
+            <code>@timer</code> decorator and applies it everywhere.
+            This is where you stop writing disposable scripts and begin building reusable libraries.
+        </div>
+
+        <div class="task-box">
+            <div class="task-title">
+                <i class="fa fa-shield"></i>Coding Task: The Performance & Security Shield
+            </div>
+
+            <div class="task-content">
+                <ol>
+                    <li>
+                        <strong>Access Guard:</strong>
+                        Create a
+                        <code>@require_auth</code> decorator that checks a
+                        <code>USER_LOGGED_IN</code> flag.
+                    </li>
+
+                    <li>
+                        <strong>Execution Timer:</strong>
+                        Create an
+                        <code>@audit_log</code> decorator that prints function name and runtime.
+                    </li>
+
+                    <li>
+                        <strong>Layering:</strong>
+                        Apply both decorators to
+                        <code>delete_database_record()</code> and prove authentication runs before timing.
+                    </li>
+
+                    <li>
+                        <strong>Package Build:</strong>
+                        Move decorators into a
+                        <code>utils/</code> folder with
+                        <code>__init__.py</code> and import them into a separate
+                        <code>main.py</code>.
+                    </li>
+                </ol>
+            </div>
+        </div>
+
+        <div class="creative-task">
+            <strong><i class="fa fa-magic"></i>Creative Task:</strong>
+            Use the "Function Gift-Wrapper" model. Visualize the function as a box and the decorator
+            as wrapping paper (Security, Logging, Caching) that adds value without opening the box
+        </div>
+
+        <div class="ai-proof">
+            <strong><i class="fa fa-user-secret"></i>AI-Proof : </strong>
+            Apply <code>functools.lru_cache</code> to a recursive Fibonacci function to make it instant.
+            Explain why <code>functools.wraps</code> is necessary to see the original function’s name after decorating.
+        </div>
+    </div>
+
+    <div class="module" id="module-12">
+        <div class="module-title">MODULE 12 — Context Managers & Regex (Full Breakdown)</div>
+
+        <div class="subtopics">
+            <strong><i class="fa fa-database"></i>Subtopics</strong>
+            <ul>
+                <li>
+                    <strong>Resource Integrity (The <code>with</code> Statement):</strong>
+                    <ul>
+                        <li>
+                            <strong>The "Clean-Up" Guarantee:</strong>
+                            Why <code>try/finally</code> is the legacy approach and
+                            <code>with</code> is the modern Pythonic standard for preventing resource leaks.
+                        </li>
+                        <li>
+                            <strong>The Context Protocol:</strong>
+                            Understanding
+                            <code>__enter__()</code> (Setup) and
+                            <code>__exit__()</code> (Teardown).
+                        </li>
+                        <li>
+                            <strong><code>contextlib</code> Utility:</strong>
+                            Using the
+                            <code>@contextmanager</code> decorator to convert generators into system guards.
+                        </li>
+                    </ul>
+                </li>
+
+                <li>
+                    <strong>Pattern Mastery (Regular Expressions):</strong>
+                    <ul>
+                        <li>
+                            <strong>Syntax Mastery:</strong>
+                            Deep dive into
+                            <code>\d</code>,
+                            <code>\w</code>,
+                            <code>+</code>,
+                            <code>*</code>, and
+                            <code>?</code>.
+                        </li>
+                        <li>
+                            <strong>Greedy vs Non-Greedy:</strong>
+                            Why
+                            <code>.*</code> may consume everything and why
+                            <code>.*?</code> offers precision.
+                        </li>
+                        <li>
+                            <strong>Capture Groups:</strong>
+                            Using named groups like
+                            <code>(?P&lt;user&gt;\w+)</code> to extract structured data.
+                        </li>
+                        <li>
+                            <strong>Lookarounds:</strong>
+                            Implementing conditional matches using
+                            <code>(?=...)</code> and
+                            <code>(?&lt;=...)</code>.
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+
+        <div class="architect-box">
+            <i class="fa fa-lightbulb-o"></i>
+            <strong>The Architect's Perspective : </strong>
+            A junior developer manually handles file cleanup and risks corruption during crashes.
+            A <b>System Sentinel</b> uses Context Managers to make code
+            <b>Exception-Proof</b>.
+            While juniors write 50 lines of
+            <code>.split()</code> logic, senior engineers solve extraction problems with a single optimized Regex
+            pattern.
+        </div>
+
+        <div class="task-box">
+            <div class="task-title">
+                <i class="fa fa-shield"></i>Coding Task: The Secure Log Processor
+            </div>
+
+            <div class="task-content">
+                <ol>
+                    <li>
+                        <strong>The Safe Opener:</strong>
+                        Create a custom class-based
+                        <code>ManagedFile</code> context manager that logs
+                        <code>"File Opened"</code> and
+                        <code>"File Closed"</code> even if the internal logic crashes.
+                    </li>
+
+                    <li>
+                        <strong>The Pattern Hunter:</strong>
+                        Write Regex patterns to extract:
+                        <ul>
+                            <li>Email addresses</li>
+                            <li>Phone numbers in format: <code>XXX-XXX-XXXX</code></li>
+                        </ul>
+                    </li>
+
+                    <li>
+                        <strong>The Validator:</strong>
+                        Use
+                        <code>re.fullmatch()</code> to validate a System ID format:
+                        <code>AA-1234</code>.
+                    </li>
+
+                    <li>
+                        <strong>The Automated Cleanup:</strong>
+                        Use
+                        <code>re.sub()</code> to detect all 9-digit sensitive IDs and replace them with
+                        <code>[HIDDEN]</code>.
+                    </li>
+                </ol>
+            </div>
+        </div>
+
+        <div class="creative-task">
+            <strong><i class="fa fa-magic"></i>Creative Task:</strong>
+            Design a <b>"Pattern Sniper"</b> scope diagram.
+            Label the dials:
+            <code>Quantifiers (How many?)</code>,
+            <code>Anchors (Where?)</code>, and
+            <code>Groups (What part?)</code>.
+            Target text patterns on a chaotic "messy wall" background.
+        </div>
+
+        <div class="ai-proof">
+            <strong><i class="fa fa-user-secret"></i>AI-Proof : </strong>
+            Refactor a search tool for a
+            <code>1GB</code> log file.
+            Explain why
+            <code>re.finditer()</code> is superior to
+            <code>re.findall()</code> for memory efficiency and maintaining
+            <code>O(1)</code> space complexity.
         </div>
     </div>
 
     <div class="module" id="module-13">
         <div class="module-title">MODULE 13 — OOP Fundamentals (The Blueprint Creator)</div>
+
         <div class="subtopics">
             <strong><i class="fa fa-database"></i>Subtopics</strong>
             <ul>
-                <li><strong>The Birth of an Object:</strong> The Blueprint vs. The House. The <code>__init__</code>
-                    Constructor. The <code>self</code> Mystery.</li>
-                <li><strong>Encapsulation (The Black Box):</strong> Access Modifiers: Using <code>_</code> vs
-                    <code>__</code> to protect sensitive data. The Interface Concept: Exposing "Buttons" while hiding
-                    the "Engine."
+                <li>
+                    <strong>The Birth of an Object (Class & Instance):</strong>
+                    <ul>
+                        <li><strong>The Blueprint vs. The House:</strong> Understanding why a Class is a structural plan
+                            and an Object is the memory-resident entity.</li>
+                        <li><strong>The __init__ Constructor:</strong> Defining the "Birth Certificate" and initializing
+                            state (e.g., battery levels or user IDs).</li>
+                        <li><strong>The self Mystery:</strong> Demystifying how methods maintain context of specific
+                            instances.</li>
+                    </ul>
                 </li>
-                <li><strong>Behavior & State:</strong> Instance Methods. String Representations: Implementing
-                    <code>__str__</code> and <code>__repr__</code>.
+                <li>
+                    <strong>Encapsulation (The Black Box):</strong>
+                    <ul>
+                        <li><strong>Access Modifiers:</strong> Using <code>_</code> vs <code>__</code> to protect
+                            sensitive data like <code>account_balance</code> from external meddling.</li>
+                        <li><strong>The Interface Concept:</strong> Exposing "Buttons" (Methods) while hiding the
+                            complex machinery of the "Engine."</li>
+                    </ul>
+                </li>
+                <li>
+                    <strong>Behavior & State:</strong>
+                    <ul>
+                        <li><strong>Instance Methods:</strong> Defining actions like <code>car.drive()</code> or
+                            <code>user.login()</code>.
+                        </li>
+                        <li><strong>String Representations:</strong> Implementing <code>__str__</code> and
+                            <code>__repr__</code> to replace cryptic memory addresses with readable data.
+                        </li>
+                    </ul>
                 </li>
             </ul>
         </div>
+
         <div class="architect-box">
             <i class="fa fa-lightbulb-o"></i>
-            <strong>The Architect's Perspective : </strong>
-            A Junior Developer sees a "Bank Account" as a float and loose functions. A Blueprint Architect sees it as an
-            encapsulated Object that validates its own withdrawals and protects its own state. We stop writing "Lines of
-            Code" and start designing "Systems of Entities."
+            <strong>The Architect's Perspective : </strong> A Junior Developer sees a "Bank Account" as a float and
+            loose functions. A <b>Blueprint Architect</b> sees it as an encapsulated Object that validates its own
+            withdrawals and protects its own state. We stop writing "Lines of Code" and start designing <b>"Systems of
+                Entities."</b>
+        </div>
+
+        <div class="task-box">
+            <div class="task-title">
+                <i class="fa fa-shield"></i>Coding Task: The RPG Hero Engine
+            </div>
+            <div class="task-content">
+                <p><strong>Objective:</strong> Build a robust Class-based system for a game character managing its own
+                    life-cycle.</p>
+                <ol>
+                    <li><strong>The Identity:</strong> Define a <code>Hero</code> class with <code>name</code>,
+                        <code>health</code>, and <code>level</code> attributes.
+                    </li>
+                    <li><strong>The Safety Lock:</strong> Implement a private <code>__health</code> attribute. Create a
+                        <code>get_health()</code> method to prevent direct external modification.
+                    </li>
+                    <li><strong>The Action:</strong> Write a <code>take_damage(amount)</code> method that triggers an
+                        "Ouch!" message and handles the "Hero has fallen" state at 0 HP.</li>
+                    <li><strong>The Audit:</strong> Override <code>__str__</code> to return: "[Level 5] Arthur - Health:
+                        100".</li>
+                </ol>
+            </div>
+        </div>
+
+        <div class="creative-task">
+            <strong><i class="fa fa-magic"></i>Creative Task:</strong> Map the <b>"DNA Blueprint"</b> of a Futuristic
+            Robot. Label the Class as the digital schematic, the Instance as the physical robot, and Methods as the
+            remote control buttons.
+        </div>
+
+        <div class="ai-proof">
+            <strong><i class="fa fa-user-secret"></i>AI-Proof : </strong> Refactor the <code>Hero</code> class using the
+            <code>@property</code> decorator. Explain why making health read-only via a property is architecturally
+            superior to a standard public variable in a multi-developer environment.
         </div>
     </div>
+
+    <div class="module" id="module-14">
+        <div class="module-title">MODULE 14 — Inheritance & Polymorphism (The Evolutionary Engine)</div>
+
+        <div class="subtopics">
+            <strong><i class="fa fa-database"></i>Subtopics</strong>
+            <ul>
+                <li>
+                    <strong>Evolutionary Chains (Inheritance):</strong>
+                    <ul>
+                        <li><strong>The Parent (Base) Class:</strong> Creating "Generic" templates (e.g.,
+                            <code>Vehicle</code>) to hold shared logic.
+                        </li>
+                        <li><strong>The Child (Derived) Class:</strong> Building "Specialized" versions (e.g.,
+                            <code>ElectricCar</code>) that inherit traits and add unique features.
+                        </li>
+                        <li><strong>The super() Power:</strong> Accessing Parent constructors to initialize shared data
+                            like <code>battery_range</code> before specialization.</li>
+                    </ul>
+                </li>
+                <li>
+                    <strong>The Master of Shapes (Polymorphism):</strong>
+                    <ul>
+                        <li><strong>Method Overriding:</strong> How a Child "rewrites" a Parent’s rule—making an
+                            <code>Ostrich.fly()</code> behave differently than a <code>Bird.fly()</code>.
+                        </li>
+                        <li><strong>Duck Typing:</strong> Python’s ability to treat different objects identically as
+                            long as they provide the required methods ("If it quacks like a duck...").</li>
+                    </ul>
+                </li>
+                <li>
+                    <strong>Architectural Rules (Abstract Base Classes):</strong>
+                    <ul>
+                        <li><strong>The abc Module:</strong> Creating "Contractual Classes" that cannot be instantiated,
+                            forcing Children to implement specific methods like <code>process_payment()</code>.</li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+
+        <div class="architect-box">
+            <i class="fa fa-lightbulb-o"></i>
+            <strong>The Architect's Perspective : </strong> A Junior Developer creates separate classes for every item,
+            leading to a "Code Jungle." An <b>Evolutionary Architect</b> builds a family tree. By updating the "Base"
+            logic once, every character in a 100,000-line system updates instantly. We move from manual updates to
+            <b>Inherited Efficiency.</b>
+        </div>
+
+        <div class="task-box">
+            <div class="task-title">
+                <i class="fa fa-shield"></i>Coding Task: The Multi-Class Combat System
+            </div>
+            <div class="task-content">
+                <p><strong>Objective:</strong> Build a combat engine where different Hero types behave uniquely using
+                    unified commands.</p>
+                <ol>
+                    <li><strong>The Ancestor:</strong> Create a base class <code>Character</code> with
+                        <code>name</code>, <code>hp</code>, and an <code>attack()</code> method.
+                    </li>
+                    <li><strong>The Specialization:</strong> Derive <code>Warrior</code> (High HP) and <code>Mage</code>
+                        (High Damage) from the base.</li>
+                    <li><strong>The Overrider:</strong> Polymorph the <code>attack()</code> method: Warrior swings a
+                        sword while the Mage casts a fireball.</li>
+                    <li><strong>The Contract:</strong> Use ABC to enforce that any new class MUST implement a
+                        <code>special_move()</code> method.
+                    </li>
+                    <li><strong>The Army:</strong> Loop through a list of mixed heroes and call <code>.attack()</code>
+                        to see Python’s automatic method resolution.</li>
+                </ol>
+            </div>
+        </div>
+
+        <div class="creative-task">
+            <strong><i class="fa fa-magic"></i>Creative Task:</strong> Design a <b>"Tech Tree"</b> visual. Label the
+            Root as <code>Vehicle</code> (Parent) and Branches as <code>Airplane</code> and <code>Car</code> (Children).
+            Highlight the "Engine" as the Inherited Trait.
+        </div>
+
+        <div class="ai-proof">
+            <strong><i class="fa fa-user-secret"></i>AI-Proof : </strong> Architect a plugin system using an
+            <code>ABC</code>. Explain the specific <code>TypeError</code> Python throws if a developer forgets to define
+            <code>start()</code> or <code>stop()</code>. Contrast <code>super().__init__()</code> against direct Parent
+            calls.
+        </div>
+    </div>
+
+    <div class="module" id="module-15">
+        <div class="module-title">MODULE 15 — The Secure Architect (Encapsulation & Dunder Magic)</div>
+
+        <div class="subtopics">
+            <strong><i class="fa fa-database"></i>Subtopics</strong>
+            <ul>
+                <li>
+                    <strong>The Fortress (Encapsulation):</strong>
+                    <ul>
+                        <li><strong>Public vs. Private:</strong> Understanding why <code>self.balance</code> is a
+                            liability and <code>self.__balance</code> is a "Vault" against accidental state corruption.
+                        </li>
+                        <li><strong>Data Integrity:</strong> Implementing "Getters" and "Setters" to prevent invalid
+                            states like <code>User_Age = -50</code>.</li>
+                    </ul>
+                </li>
+                <li>
+                    <strong>The Pythonic Decorator (@property):</strong>
+                    <ul>
+                        <li><strong>The Managed Attribute:</strong> Transitioning from <code>user.get_email()</code> to
+                            the cleaner <code>user.email</code> syntax while maintaining backend validation.</li>
+                    </ul>
+                </li>
+                <li>
+                    <strong>The Secret Language (Dunder/Magic Methods):</strong>
+                    <ul>
+                        <li><strong>Object Identity:</strong> Mastering <code>__str__</code> and <code>__repr__</code>
+                            for readable debugging (e.g., <code>Warrior(HP: 100)</code>).</li>
+                        <li><strong>Operator Overloading:</strong> Teaching objects to interact via
+                            <code>__add__</code>, <code>__len__</code>, and <code>__eq__</code>.
+                        </li>
+                        <li><strong>The Container Protocol:</strong> Implementing <code>__getitem__</code> to allow
+                            list-like indexing on custom classes.</li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+
+        <div class="architect-box">
+            <i class="fa fa-lightbulb-o"></i>
+            <strong>The Architect's Perspective : </strong> A Junior Developer leaves variables "naked," leading to
+            <b>State Corruption</b>. A <b>Senior Architect</b> treats a class as a "Black Box." Users interact with the
+            buttons (Methods), but the internal wiring (Private Variables) remains untouched, making the system
+            <b>leak-proof</b> and unbreakable.
+        </div>
+
+        <div class="task-box">
+            <div class="task-title">
+                <i class="fa fa-shield"></i>Coding Task: The Secure Banking Core
+            </div>
+            <div class="task-content">
+                <p><strong>Objective:</strong> Build a financial system that validates every penny and speaks
+                    "Pythonic."</p>
+                <ol>
+                    <li><strong>The Vault:</strong> Initialize an <code>Account</code> class with a private
+                        <code>__balance</code> attribute.
+                    </li>
+                    <li><strong>The Gatekeeper:</strong> Use <code>@property</code> for access and a
+                        <code>.setter</code> to block negative deposits.
+                    </li>
+                    <li><strong>The Identity:</strong> Use <code>__str__</code> to display: "Account Holder: [Name] |
+                        Balance: $[Amount]".</li>
+                    <li><strong>The Merger:</strong> Implement <code>__add__</code> so <code>acc1 + acc2</code> returns
+                        a new combined account.</li>
+                    <li><strong>Security Breach:</strong> Attempt to force <code>my_account.__balance = 999999</code>.
+                        Observe how <b>Name Mangling</b> protects the original state.</li>
+                </ol>
+            </div>
+        </div>
+
+        <div class="creative-task">
+            <strong><i class="fa fa-magic"></i>Creative Task:</strong> Visualize an <b>"Arcade Machine."</b> Label the
+            Joystick as Public Methods, the Locked Back Panel as Encapsulation, and the Screen as the
+            <code>__str__</code> output.
+        </div>
+
+        <div class="ai-proof">
+            <strong><i class="fa fa-user-secret"></i>AI-Proof : </strong> Explain the "Gentleman’s Agreement" of
+            <code>_name</code> vs. the hard lock of <code>__name</code>. Refactor a <code>Rectangle</code> class using
+            <code>@property</code> to create a reactive area attribute that updates automatically when width changes.
+        </div>
+    </div>
+
+    <div class="module" id="module-16">
+        <div class="module-title">MODULE 16 — The Meta-Architect (Introspection & Class Magic)</div>
+
+        <div class="subtopics">
+            <strong><i class="fa fa-database"></i>Subtopics</strong>
+            <ul>
+                <li>
+                    <strong>The X-Ray Vision (Introspection):</strong>
+                    <ul>
+                        <li><code>type()</code><strong> vs </strong> <code>isinstance()</code>: Understanding why
+                            hard-coding types is a "Code
+                            Smell" and how to check inheritance chains.</li>
+                        <li><strong>Dynamic Access:</strong> Using <code>getattr()</code> and <code>setattr()</code> to
+                            manipulate attributes via strings.</li>
+                        <li><strong>The </strong> <code>__dict__</code> <strong>Secret:</strong> Peeking into the
+                            underlying mapping that stores an
+                            object’s entire state.</li>
+                    </ul>
+                </li>
+                <li>
+                    <strong>The "Class Factory" (Class & Static Methods):</strong>
+                    <ul>
+                        <li><code>@classmethod:</code> Implementing alternative constructors (e.g.,
+                            <code>User.from_json(data)</code>) for flexible object creation.
+                        </li>
+                        <li><code>@staticmethod:</code> Packaging utility logic that belongs to the class namespace
+                            but doesn’t require <code>self</code> or <code>cls</code>.</li>
+                    </ul>
+                </li>
+                <li>
+                    <strong>Metaprogramming Patterns:</strong>
+                    <ul>
+                        <li><strong>The Singleton (</strong><code>__new__</code><strong>)</strong>: Overriding the
+                            "Birth" of an object to ensure a
+                            single source of truth (e.g., a Database Connection).</li>
+                        <li><code>__init_subclass__:</code> The Final Layer—automating registration or validation
+                            every time a child class is defined.</li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+
+        <div class="architect-box">
+            <i class="fa fa-lightbulb-o"></i>
+            <strong>The Architect's Perspective : </strong> A Junior Developer builds a "Static" world where every class
+            is hard-coded. A <b>Senior Architect</b> builds a <b>Dynamic System</b>. Imagine dropping a new
+            <code>.py</code> file
+            into a folder and having your program automatically discover, inspect, and plug in the new class without
+            changing a single line of core logic. That is the true power of <b>Introspection.</b>
+        </div>
+
+        <div class="task-box">
+            <div class="task-title">
+                <i class="fa fa-shield"></i>Coding Task: The Dynamic Plugin Registry
+            </div>
+            <div class="task-content">
+                <p><strong>Objective:</strong> Build a system that "discovers" and validates new features automatically.
+                </p>
+                <ol>
+                    <li><strong>The Auto-Register:</strong> Use <code>__init_subclass__</code> so that any class
+                        inheriting from <code>Plugin</code> is automatically added to a global <code>REGISTRY</code>
+                        list.</li>
+                    <li><strong>The Inspector:</strong> Write a utility that uses <code>dir()</code> and
+                        <code>getattr()</code> to filter out dunder methods and list only public plugin actions.
+                    </li>
+                    <li><strong>The Singleton:</strong> Implement a <code>SystemConfig</code> class using
+                        <code>__new__</code> to ensure all instances share the same memory address.
+                    </li>
+                    <li><strong>The Factory:</strong> Create a <code>@classmethod</code> named <code>from_dict()</code>
+                        to instantiate objects directly from raw data mappings.</li>
+                </ol>
+            </div>
+        </div>
+
+        <div class="creative-task">
+            <strong><i class="fa fa-magic"></i>Creative Task:</strong> Create an <b>"X-Ray"</b> visual of a Python
+            Class. Show the <code>__dict__</code> as the internal skeleton, Methods as the muscles, and the Singleton
+            Pattern as a "One-Way Mirror."
+        </div>
+
+        <div class="ai-proof">
+            <strong><i class="fa fa-user-secret"></i>AI-Proof : </strong> Challenge the AI to create a "Strict Registry"
+            that throws a <code>TypeError</code> during class definition if a subclass of <code>Plugin</code> doesn’t
+            include a <code>version</code> attribute. Explain why <code>__init_subclass__</code> is more efficient than
+            a decorator for this enforcement.
+        </div>
+    </div>
+
+    <div class="module" id="module-17">
+        <div class="module-title">MODULE 17 — The Linked List (The Chain of Data)</div>
+
+        <div class="subtopics">
+            <strong><i class="fa fa-database"></i>Subtopics</strong>
+            <ul>
+                <li>
+                    <strong>The Anatomy of a Node:</strong>
+                    <ul>
+                        <li><strong>The Cargo & The Compass:</strong> Designing a <code>Node</code> class that
+                            encapsulates data and a <code>next</code> memory reference.</li>
+                    </ul>
+                </li>
+                <li>
+                    <strong>Singly Linked Lists (SLL):</strong>
+                    <ul>
+                        <li><strong>The Head & The Tail:</strong> Managing entry points and boundary conditions in the
+                            chain.</li>
+                        <li><strong>Manual Traversal:</strong> Why we use <code>while current_node:</code> loops instead
+                            of indexed access.</li>
+                        <li><strong>Insertion Efficiency:</strong> Proving <code>O(1)</code> performance for "Head"
+                            additions vs. the <code>O(n)</code> cost of <code>list.insert(0)</code>.</li>
+                    </ul>
+                </li>
+                <li>
+                    <strong>Doubly Linked Lists (DLL):</strong>
+                    <ul>
+                        <li><strong>The Two-Way Street:</strong> Implementing <code>prev</code> pointers for
+                            bidirectional navigation.</li>
+                        <li><strong>Memory vs. Speed:</strong> Analyzing Pointer Overhead and why Linked Lists offer
+                            "infinite" structural flexibility.</li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+
+        <div class="architect-box">
+            <i class="fa fa-lightbulb-o"></i>
+            <strong>The Architect's Perspective : </strong> A Junior Developer uses Python lists for everything. A
+            <b>Senior Architect</b> knows a Python list is a <code>Dynamic Array</code> that requires costly memory
+            copies when full. A Linked List never copies; you simply "snap" a new link. Use this for <b>high-frequency
+                mutations</b> where <code>O(1)</code> insertion is non-negotiable.
+        </div>
+
+        <div class="task-box">
+            <div class="task-title">
+                <i class="fa fa-shield"></i>Coding Task: The Music Playlist Engine
+            </div>
+            <div class="task-content">
+                <p><strong>Objective:</strong> Build a music player backend using a Doubly Linked List for seamless
+                    navigation.</p>
+                <ol>
+                    <li><strong>The Node:</strong> Create a <code>SongNode</code> with <code>title</code>,
+                        <code>next</code>, and <code>prev</code> attributes.
+                    </li>
+                    <li><strong>The Connector:</strong> Write an <code>add_song()</code> method to link new tracks to
+                        the <code>tail</code>.</li>
+                    <li><strong>The Navigator:</strong> Implement <code>play_next()</code> and <code>play_prev()</code>
+                        with a circular loop logic back to the <code>head</code>.</li>
+                    <li><strong>The Search:</strong> Write a <code>remove_song(title)</code> method that "re-wires"
+                        neighboring pointers to bridge the gap of the deleted node.</li>
+                </ol>
+            </div>
+        </div>
+
+        <div class="creative-task">
+            <strong><i class="fa fa-magic"></i>Creative Task:</strong> Map the <b>"Treasure Hunt."</b> Label Islands as
+            <code>Nodes</code>, Bottles as <code>Pointers</code>, and a Lost Map as a <b>Memory Leak</b>. Visualize why
+            losing the <code>Head</code> causes the entire chain to vanish.
+        </div>
+
+        <div class="ai-proof">
+            <strong><i class="fa fa-user-secret"></i>AI-Proof : </strong> Reverse a Singly Linked List in-place. Ask the
+            AI: "Show me the <b>’Tortoise and Hare’</b> algorithm to find the middle element in a single pass without
+            calculating total length."
+        </div>
+    </div>
+
+    <div class="module" id="module-18">
+        <div class="module-title">MODULE 18 — Stacks & Queues (The Logic of Order)</div>
+
+        <div class="subtopics">
+            <strong><i class="fa fa-database"></i>Subtopics</strong>
+            <ul>
+                <li>
+                    <strong>The LIFO Principle (Stacks):</strong>
+                    <ul>
+                        <li><strong>Last-In, First-Out:</strong> Visualizing data as a stack of cafeteria plates.</li>
+                        <li><strong>The Undo Engine:</strong> How software state is tracked to allow <code>O(1)</code>
+                            reversions.</li>
+                        <li><strong>The Call Stack:</strong> Understanding function execution and the mechanics of a
+                            <b>"Stack Overflow."</b>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <strong>The FIFO Principle (Queues):</strong>
+                    <ul>
+                        <li><strong>First-In, First-Out:</strong> Mapping data flow to real-world scenarios like a bank
+                            line.</li>
+                        <li><strong>The Task Buffer:</strong> Managing print jobs and network packets in arrival order.
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <strong>Architectural Optimization:</strong>
+                    <ul>
+                        <li><strong>List vs. Deque:</strong> Why <code>list.pop(0)</code> is an <code>O(n)</code> "Code
+                            Smell" and <code>collections.deque</code> is the professional <code>O(1)</code> standard.
+                        </li>
+                        <li><strong>Double-Ended Queues:</strong> Hybrid structures for simultaneous <code>LIFO</code>
+                            and <code>FIFO</code> operations.</li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+
+        <div class="architect-box">
+            <i class="fa fa-lightbulb-o"></i>
+            <strong>The Architect's Perspective : </strong> A Junior Developer uses a <code>list</code> for everything,
+            manually managing indices and risking "Off-by-One" errors. A <b>Systems Architect</b> restricts access to
+            only the "Top" or "Front." By limiting interaction surface area, you make the system impossible to break.
+            You aren’t just storing data; you are <b>enforcing a Workflow.</b>
+        </div>
+
+        <div class="task-box">
+            <div class="task-title">
+                <i class="fa fa-shield"></i>Coding Task: The System Task Scheduler
+            </div>
+            <div class="task-content">
+                <p><strong>Objective:</strong> Build a dual-purpose tool that manages "Undo" history and "Task"
+                    processing.</p>
+                <ol>
+                    <li><strong>The Undo Stack:</strong> Implement a <code>Stack</code> class to store and revert
+                        "Editor Commands."</li>
+                    <li><strong>The Printer Queue:</strong> Use <code>collections.deque</code> to process 5 "Print Jobs"
+                        in <code>FIFO</code> order.</li>
+                    <li><strong>The Balanced Validator:</strong> Use a <code>Stack</code> to verify matching brackets
+                        <code>{[()]}</code> in a code string. Detect "Illegal States" if a closing bracket appears out
+                        of order.
+                    </li>
+                    <li><strong>Overflow Protection:</strong> Set a <code>maxlen</code> on your <code>Queue</code> and
+                        demonstrate how the system handles a "Buffer Overflow" when incoming tasks exceed capacity.</li>
+                </ol>
+            </div>
+        </div>
+
+        <div class="creative-task">
+            <strong><i class="fa fa-magic"></i>Creative Task:</strong> Design a <b>"Fast Food Kitchen"</b> diagram.
+            Label the Order Queue (<code>FIFO</code>) and the Dish Stack (<code>LIFO</code>). Visualize the flow from
+            order placement to plate retrieval.
+        </div>
+
+        <div class="ai-proof">
+            <strong><i class="fa fa-user-secret"></i>AI-Proof : </strong> Challenge the AI to implement a
+            <code>Queue</code> using two <code>Stacks</code>. Analyze the time complexity of <code>enqueue</code> vs
+            <code>dequeue</code>. Explain why an architect might choose this in a functional environment with immutable
+            data structures.
+        </div>
+    </div>
+
+    <div class="module" id="module-19">
+        <div class="module-title">MODULE 19 — Trees & Binary Search (The Hierarchical Web)</div>
+        <div class="subtopics">
+            <strong><i class="fa fa-database"></i>Subtopics</strong>
+            <ul>
+                <li>
+                    <strong>The Branching Logic (Tree Anatomy):</strong>
+                    <ul>
+                        <li><strong>The Root, Parent, and Child:</strong> Conceptualizing the Tree as a
+                            <code>Linked List</code> with "multiple arms."
+                        </li>
+                        <li><strong>Leaf Nodes:</strong> Identifying the terminal "End Points" of a data structure.</li>
+                    </ul>
+                </li>
+                <li>
+                    <strong>The Speed of Logic (Binary Search Trees - BST):</strong>
+                    <ul>
+                        <li><strong>The Left-Right Rule:</strong> Why "Smaller goes Left, Larger goes Right" creates a
+                            self-organizing search engine.</li>
+                        <li><strong>Search Complexity:</strong> Proving why <code>O(log n)</code> allows searching
+                            1,000,000 items in just 20 steps.</li>
+                    </ul>
+                </li>
+                <li>
+                    <strong>Traversal Algorithms (The Pathfinders):</strong>
+                    <ul>
+                        <li><strong>DFS (Depth-First Search):</strong> Mastering <code>In-order</code>,
+                            <code>Pre-order</code>, and <code>Post-order</code> strategies.
+                        </li>
+                        <li><strong>BFS (Breadth-First Search):</strong> Level-by-level scanning—the logic behind GPS
+                            "nearest point" searches.</li>
+                    </ul>
+                </li>
+                <li>
+                    <strong>Real-World Hierarchies:</strong>
+                    <ul>
+                        <li><strong>The DOM & JSON Trees:</strong> Browsers and nested <code>JSON</code> configurations
+                            as living tree structures.</li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+
+        <div class="architect-box">
+            <i class="fa fa-lightbulb-o"></i>
+            <strong>The Architect's Perspective : </strong> A Junior Developer stores nested data in messy lists,
+            forcing <code>O(n)</code> "For-Loops" that lag as data grows. A <b>System Cartographer</b> builds a Tree. By
+            organizing hierarchically, you eliminate 50% of the search space with every single step. You aren’t just
+            storing data; you are <b>mapping the shortest path</b> to it.
+        </div>
+
+        <div class="task-box">
+            <div class="task-title">
+                <i class="fa fa-shield"></i>Coding Task: The Corporate Directory Engine
+            </div>
+            <div class="task-content">
+                <p><strong>Objective:</strong> Build a searchable employee database where retrieval is near-instant.</p>
+                <ol>
+                    <li><strong>The Node:</strong> Create an <code>EmployeeNode</code> storing <code>ID</code> and
+                        <code>Name</code> with <code>left</code> and <code>right</code> pointers.
+                    </li>
+                    <li><strong>The Inserter:</strong> Write an <code>add_employee()</code> method that maintains the
+                        <code>BST</code> "Left-Right" rule.
+                    </li>
+                    <li><strong>The Finder:</strong> Implement a recursive <code>search(id)</code> function that prints
+                        every comparison made.</li>
+                    <li><strong>The Auditor:</strong> Write an <code>in_order_print()</code> method to display the
+                        directory in ascending order.</li>
+                    <li><strong>The Manager:</strong> Implement <code>find_max()</code> to instantly find the
+                        highest-ranking <code>ID</code> in the system.</li>
+                </ol>
+            </div>
+        </div>
+
+        <div class="creative-task">
+            <strong><i class="fa fa-magic"></i>Creative Task:</strong> Design an <b>"Upside-Down Oak."</b> Label the
+            Trunk as the <code>Root</code>, Branches as <code>Parent Nodes</code>, and Leaves as <code>Data</code>.
+            Highlight a "Path" to visualize <b>Search Depth</b>.
+        </div>
+
+        <div class="ai-proof">
+            <strong><i class="fa fa-user-secret"></i>AI-Proof : </strong> Ask the AI why a <code>BST</code> becomes
+            inefficient with sorted input (1, 2, 3...). Define a <b>"Degenerate Tree"</b> and explore how <b>AVL</b> or
+            <b>Red-Black Trees</b> prevent this "Linear Trap."
+        </div>
+    </div>
+
+
+    <div class="module" id="module-20">
+        <div class="module-title">MODULE 20 — Heaps & Priority Queues (The Emergency Room)</div>
+
+        <div class="subtopics">
+            <strong><i class="fa fa-database"></i>Subtopics</strong>
+            <ul>
+                <li>
+                    <strong>The Power of the Peak (Heap Anatomy):</strong>
+                    <ul>
+                        <li><strong>Max-Heap vs. Min-Heap:</strong> Understanding why the most "Important" item
+                            (Largest/Smallest) must reside at the <code>Root</code>.</li>
+                        <li><strong>The Complete Tree:</strong> Why Heaps are "packed" left-to-right to maintain
+                            logarithmic height.</li>
+                    </ul>
+                </li>
+                <li>
+                    <strong>The Priority Queue (PQ):</strong>
+                    <ul>
+                        <li><strong>The VIP Line:</strong> Differentiating <code>PQ</code> from standard
+                            <code>FIFO</code> by using "Urgency Levels" over "Arrival Time."
+                        </li>
+                        <li><strong>The heapq Module:</strong> Mastering Python’s C-optimized library for high-speed
+                            heap operations.</li>
+                    </ul>
+                </li>
+                <li>
+                    <strong>The Maintenance Logic:</strong>
+                    <ul>
+                        <li><strong>Bubble Up & Sift Down:</strong> The mechanics of <code>Heapify</code> — moving
+                            high-priority tasks to the top and reorganizing after completion.</li>
+                    </ul>
+                </li>
+                <li>
+                    <strong>Real-World Triage:</strong>
+                    <ul>
+                        <li><strong>CPU Scheduling & A* Search:</strong> How systems decide processing power and
+                            pathfinding via priority logic.</li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+
+        <div class="architect-box">
+            <i class="fa fa-lightbulb-o"></i>
+            <strong>The Architect's Perspective : </strong> A Junior Developer sorts an entire list every time a new
+            task arrives, killing the <code>CPU</code>. A <b>Performance Architect</b> uses a <code>Heap</code>. You
+            don’t need to sort the entire dataset; you only need to know who is <b>First</b>. By maintaining only the
+            "Peak," your system stays lightning-fast even with millions of pending tasks.
+        </div>
+
+        <div class="task-box">
+            <div class="task-title">
+                <i class="fa fa-shield"></i>Coding Task: The Emergency Response System
+            </div>
+            <div class="task-content">
+                <p><strong>Objective:</strong> Build a triage engine that processes patients based on severity, not
+                    arrival time.</p>
+                <ol>
+                    <li><strong>The Patient Record:</strong> Create a <code>Patient</code> class using a "Severity
+                        Score" (1–10) as the key.</li>
+                    <li><strong>The Triage:</strong> Use the <code>heapq</code> module to initialize a
+                        <code>PriorityQueue</code>.
+                    </li>
+                    <li><strong>The Intake:</strong> Add 5 patients. Pro-tip: Use negative numbers for
+                        <code>Max-Heap</code> behavior or tuples like <code>(severity, name)</code>.
+                    </li>
+                    <li><strong>The Doctor’s Call:</strong> Implement a loop using <code>heappop()</code> to treat the
+                        most critical patients first.</li>
+                    <li><strong>The Update:</strong> Use <code>heapify()</code> to transform a messy, unsorted list of
+                        tasks into a valid <code>Heap</code> structure instantly.</li>
+                </ol>
+            </div>
+        </div>
+
+        <div class="creative-task">
+            <strong><i class="fa fa-magic"></i>Creative Task:</strong> Design an <b>"Oxygen Mask"</b> icon. Label the
+            Top Valve as the <code>Root</code>. Draw "Bubbles" rising from the bottom (<code>Heapify Up</code>) with the
+            slogan: "Urgency over Order."
+        </div>
+
+        <div class="ai-proof">
+            <strong><i class="fa fa-user-secret"></i>AI-Proof : </strong> Ask the AI why Heaps use <code>Lists</code>
+            instead of <code>Node</code> objects. Prove the math for finding children at <code>2i + 1</code>. Refactor a
+            10M-number stream to find the <b>Top 100</b> values without sorting, maintaining <code>O(n log k)</code>
+            efficiency.
+        </div>
+    </div>
+    <h2 class="level-header" id="level-3">LEVEL 3: PROFESSIONAL ARCHITECTURE</h2>
 
     <h2 class="level-header" id="level-4">LEVEL 4: HIGH PERFORMANCE & WEB DEVELOPMENT</h2>
 
@@ -1168,6 +2636,19 @@
                 tocElement.scrollIntoView({ behavior: "smooth", block: "start" });
             }
         });
+        const toggleButton = document.getElementById('theme-toggle');
+
+        toggleButton.addEventListener('click', () => {
+            document.body.classList.toggle('dark-mode');
+
+            // Optional: Update button text
+            if (document.body.classList.contains('dark-mode')) {
+                toggleButton.textContent = 'Switch to Light Mode';
+            } else {
+                toggleButton.textContent = 'Switch to Dark Mode';
+            }
+        });
+
 
     </script>
 </body>

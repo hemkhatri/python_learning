@@ -1,0 +1,23 @@
+MODULE 4 — Errors, Exceptions & Logging
+Subtopics
+The Anatomy of Failure: Syntax Errors vs. Exceptions. Common System Exceptions: FileNotFoundError, PermissionError, ValueError, KeyError, and ZeroDivisionError.
+Defensive Programming:
+The try...except Block: Catching specific errors to avoid the security risks of a "Bare Except."
+Multiple Handlers: Differentiating logic for ValueError vs. PermissionError .
+The else & finally Clauses: Using else for success-only code and finally for resource cleanup (closing files/DBs).
+Raising & Custom Exceptions: The raise keyword for manual constraint violation and creating Custom Exception Classes (e.g., InsufficientBalanceError).
+Professional Logging:
+The logging Module: Moving from print() to persistent system logs.
+Log Levels: DEBUG, INFO, WARNING, ERROR, CRITICAL.
+Handlers & Formatters: Saving logs to app.log with timestamps and line numbers.
+Traceback Analysis: Interpreting the "Stack Trace" to locate root causes.
+ The Architect's Perspective : "Hope is not a strategy." Senior Developers use Robust Error Handling to make systems "Self-Healing." If a log can’t be written, the system must switch to backup, not die silently.
+Coding Task: The Fault-Tolerant Transaction Manager
+Objective: Build a transaction processor that refuses to crash.
+
+Simulator: Create process_transaction(amount: str, balance: float).
+Logic: Catch ValueError for bad inputs; raise a custom InadequateFundsError if amount exceeds balance.
+Persistence: Use a finally block to append the "Session Status" to transactions.log regardless of success or failure.
+Constraint: The program must process all 5 attempts without terminating, no matter how many errors occur.
+Creative Task: Draw the tree structure of Python's BaseException. Highlight where Exception sits and why we never catch KeyboardInterrupt by mistake.
+AI-Proof : Refactor a bare except: into a Multi-Level Handler that treats FileNotFoundError as a warning and PermissionError as a critical failure using a rotating log file.
