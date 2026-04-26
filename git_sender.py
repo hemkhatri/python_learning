@@ -16,7 +16,7 @@ def main():
     print("🚀 HemLex Auto-Git Pusher 🚀\n")
     
     # 1. Get the Repo URL
-    repo_url = input("Drop your GitHub Repo URL here: ").strip()
+    repo_url = "https://github.com/hemkhatri/python_learning"
     if not repo_url:
         print("Bruh, I need a URL to know where to send this. Try again.")
         sys.exit(1)
