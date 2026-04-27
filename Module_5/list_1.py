@@ -17,7 +17,27 @@
 # new_price.sort()
 # print(new_price)
 
-numbers = [5]
-checker = [(x, y) for x in range(5) if x > 2 for y in range(5) if y % 2 == 0]
-print(numbers)
-print(checker)
+# numbers = [5]
+# checker = [(x, y) for x in range(5) if x > 2 for y in range(5) if y % 2 == 0]
+# print(numbers)
+# print(checker)
+
+my_list = [1, 2, 3, 4, 5, 6, 7, 8]
+my_list2 = ["This", "is", "an", "apple"]
+print(f"{my_list}")
+# my_list.append("Hello World")
+# my_list.extend(my_list2)
+my_list.append("Helllo Man")
+
+find = "Helllo Man"
+
+# my_list.remove(find)
+# print(f"This is after using the remove() tag: {my_list}")
+
+
+my_list.pop(1)
+print(my_list)
+
+print(my_list.index(find))
+# my_list.clear()
+print(my_list)
