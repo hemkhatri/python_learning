@@ -96,7 +96,16 @@
 # }
 # print(dict[frozenset({1, 2, 3})])
 
-key1 = frozenset([1, 2, 3, 4])
-key2 = frozenset([2, 1, 4, 3, 2, 1])
+# key1 = frozenset([1, 2, 3, 4])
+# key2 = frozenset([2, 1, 4, 3, 2, 1])
 
-print(key1 == key2)
+# print(key1 == key2)
+
+
+# sets = {1, 2, 3, 4, 5}
+# sets.add(7)
+# sets.clear()
+# print(sets)
+set1 = {1, 2, 3, 4}
+set2 = {2, 3, 4}
+print(set1.difference_update(set2))
